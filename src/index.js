@@ -1,17 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import thunk from "redux-thunk";
+import { createBrowserHistory } from "history";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import reducers from "./js/store/reducers/reducers";
+import Root from "./js/Root";
+
+import './css/styles.scss';
+
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers(reducers);
+
+// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+const customHistory = createBrowserHistory();
+
+const App = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <Suspense
+        fallback={
+          <div style={{ textAlign: "center", margin: "70px auto" }}>
+            <h1>ss</h1>
+          </div>
+        }
+      >
+        <Router history={customHistory}>
+          <Root />
+        </Router>
+      </Suspense>
+    </BrowserRouter>
+  </Provider>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<App />, document.getElementById("root"));

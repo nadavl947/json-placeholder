@@ -1,0 +1,86 @@
+@import "../../../css/designSystem.scss";
+
+.sideMenu {
+  display: flex;
+  height: calc(100vh - 65px);
+  position: sticky;
+  top: 65px;
+
+  .menuContent {
+    width: 0px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    padding: 0px;
+
+    .linkItem {
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background-color: $primary;
+      box-shadow: $box-shadow4;
+      color: $gradientL5;
+      height: 30px;
+      display: flex;
+      padding: 0 10px;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+
+      &:hover {
+        background-color: $primaryD2;
+      }
+      &:active {
+        background-color: $primaryD3;
+      }
+
+      h3 {
+        white-space: nowrap;
+        overflow: hidden;
+        font-weight: 600;
+        margin: 0 10px;
+      }
+    }
+
+    &.menuOpen {
+      transition: all 0.3s ease-in-out;
+      width: 200px;
+      padding: 20px;
+      .linkItem {
+        opacity: 1;
+      }
+    }
+  }
+
+  .sideMenuHandlerSection {
+    background-color: $gradientD1;
+    width: 1px;
+    margin: 0 25px;
+    position: relative;
+
+    .btn {
+      button {
+        position: absolute;
+        border: 1px solid $gradientD1;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: -15px;
+        top: 20px;
+        background-color: $gradientL5;
+
+        i {
+          font-size: 14px;
+          color: $gradientD1;
+        }
+      }
+
+      &.openMenu {
+        i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

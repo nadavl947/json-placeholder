@@ -1,0 +1,8 @@
+@import "../../../css/designSystem.scss";
+
+.header {
+  background-color: $gradientD3;
+  height: 65px;
+  position: sticky;
+  top: 0;
+}
