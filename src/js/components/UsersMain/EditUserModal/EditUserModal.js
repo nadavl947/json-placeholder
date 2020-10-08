@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import cn from "classnames";
 import * as actions from "../../../store/actions/actions";
 
 import "./EditUserModal.scss";
@@ -9,6 +10,8 @@ const EditUserModal = () => {
 
   const userData = useSelector((state) => state.usersReducer.selectedUserData);
 
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
   const [userImg, setUserImg] = useState(userData.img);
   const [userName, setUserName] = useState(userData.name);
   const [userAge, setUserAge] = useState(userData.age);
@@ -16,7 +19,21 @@ const EditUserModal = () => {
   const [userEmail, setUserEmail] = useState(userData.email);
   const [userWork, setUserWork] = useState(userData.work);
 
-  console.log(userData);
+  const handelFormSubmit = (event) => {
+    event.preventDefault();
+    const userUpdatedData = {
+      id: userData._id,
+      userImg,
+      userName,
+      userAge,
+      userBirtDay,
+      userEmail,
+      userWork,
+    };
+
+    dispatch(actions.updateUserDateAction(userUpdatedData));
+    dispatch(actions.openEditUserAction());
+  };
 
   return (
     <div className="editUserModalContainer">
@@ -37,8 +54,79 @@ const EditUserModal = () => {
           </div>
           <div className="divider" />
           <div className="formSection">
-            <h1>form</h1>
+            <form>
+              <div className="formItem">
+                <p>Contact Name</p>
+                <input
+                  type="text"
+                  name="userName"
+                  value={userName}
+                  onChange={(event) => setUserName(event.target.value)}
+                />
+              </div>
+              <div className="formItem">
+                <p>Email</p>
+                <input
+                  type="text"
+                  name="userEmail"
+                  value={userEmail}
+                  onChange={(event) => setUserEmail(event.target.value)}
+                />
+              </div>
+              <div className="formItem">
+                <p>Place of Work</p>
+                <input
+                  type="text"
+                  name="userWork"
+                  value={userWork}
+                  onChange={(event) => setUserWork(event.target.value)}
+                />
+              </div>
+              <div className="formItem">
+                <p>BirtDay</p>
+                <input
+                  type="text"
+                  name="userBirtDay"
+                  value={userBirtDay}
+                  onChange={(event) => setUserBirtDay(event.target.value)}
+                />
+              </div>
+              <div className="formItem">
+                <p>Age</p>
+                <input
+                  type="number"
+                  name="userAge"
+                  value={userAge}
+                  onChange={(event) => setUserAge(event.target.value)}
+                />
+              </div>
+            </form>
           </div>
+        </div>
+        <div className="fotterBtnsSection">
+          <div className={cn("deleteBtn", isDeleteOpen && "delteOpen")}>
+            <button
+              type="button"
+              onClick={() => setIsDeleteOpen(!isDeleteOpen)}
+            >
+              Delete
+            </button>
+            {isDeleteOpen && (
+              <>
+                <p>Are you sure you want to delete this user?</p>
+                <button type="button" className="delteSureBtn">
+                  Yes
+                </button>
+              </>
+            )}
+          </div>
+          <button
+            type="submit"
+            className="updateBtn"
+            onClick={(e) => handelFormSubmit(e)}
+          >
+            Update
+          </button>
         </div>
       </div>
     </div>

@@ -18,11 +18,12 @@
     border-radius: 12px;
     box-shadow: $box-shadow1;
     animation: scalAnimations 0.3s ease-in-out 0s 1;
-    padding: 20px;
+    padding: 30px 40px;
 
     .editModalClose {
       display: flex;
       justify-content: flex-end;
+      margin-bottom: 30px;
 
       button {
         font-size: 16px;
@@ -32,6 +33,7 @@
 
     .mainContentSection {
       display: flex;
+      margin-bottom: 40px;
 
       .avatarSection {
         flex: 1;
@@ -64,6 +66,96 @@
 
       .formSection {
         flex: 1;
+
+        form {
+          .formItem {
+            p {
+              margin: 0 10px 5px;
+              font-size: 16px;
+              color: $gradientD4;
+            }
+
+            input {
+              border: solid 1px $gradientL2;
+              border-radius: 8px;
+              width: 100%;
+              padding: 4px 8px;
+              margin-bottom: 20px;
+              line-height: 20px;
+              color: $gradientD5;
+              transition: all 0.1s ease-in-out;
+              font-size: 14px;
+
+              &:hover {
+                box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+              }
+              &:focus {
+                box-shadow: 0 0 3px 1px $primary;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .fotterBtnsSection {
+      display: flex;
+      justify-content: space-between;
+
+      .deleteBtn {
+        border-radius: 12px;
+        box-shadow: $box-shadow4;
+        color: $gradientD4;
+        border: solid 1px $dangeros;
+        height: 30px;
+        padding: 0 10px;
+        transition: all 0.2s ease-in-out;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 65px;
+        overflow: hidden;
+
+        button {
+          font-size: 14px;
+          color: $dangeros;
+        }
+
+        p {
+          margin: 0 10px;
+          white-space: nowrap;
+          overflow: hidden;
+          transition: all 0.1s ease-in-out;
+          opacity: 0;
+        }
+
+        &.delteOpen {
+          transition: all 0.2s ease-in-out;
+          width: 380px;
+
+          p {
+          transition: all 0.1s ease-in-out;
+            opacity: 1;
+          }
+        }
+      }
+
+      .updateBtn {
+        border-radius: 12px;
+        background-color: $primary;
+        box-shadow: $box-shadow4;
+        color: $gradientL5;
+        height: 30px;
+        padding: 0 10px;
+        transition: all 0.3s ease-in-out;
+        font-size: 14px;
+
+        &:hover {
+          background-color: $primaryD2;
+        }
+        &:active {
+          background-color: $primaryD3;
+        }
       }
     }
   }
