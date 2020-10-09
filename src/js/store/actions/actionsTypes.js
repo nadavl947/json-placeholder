@@ -1,4 +1,12 @@
+// users actions
 export const SET_ALL_USERS = "SET_ALL_USERS";
 export const OPEN_EDIT_USER_MODAL = "OPEN_EDIT_USER_MODAL";
 export const SET_USER_TO_EDIT = "SET_USER_TO_EDIT";
 export const UPDATE_USER_CALLBACK = "UPDATE_USER_CALLBACK";
+export const DELETE_USER = "DELETE_USER";
+
+// movies actions
+export const SET_ALL_MOVIES_LIST = "SET_ALL_MOVIES_LIST";
+export const LOAD_MORE_MOVIES = "LOAD_MORE_MOVIES";
+export const OPEN_MOVIE_DETAILS_MODAL = "OPEN_MOVIE_DETAILS_MODAL";
+export const SET_MOVIE_DETAILS = "SET_MOVIE_DETAILS";

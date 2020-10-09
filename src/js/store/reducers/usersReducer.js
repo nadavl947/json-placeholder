@@ -51,6 +51,20 @@ const updateCurrentUser = (state, action) => {
   };
 };
 
+const setDeleteUserState = (state, action) => {
+  const { deleteId } = action;
+  const { usersList } = state;
+  const userCopyArray = [...usersList];
+  const usersFilterArray = userCopyArray.filter(
+    (user) => user._id !== deleteId
+  );
+
+  return {
+    ...state,
+    usersList: usersFilterArray,
+  };
+};
+
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionsTypes.SET_ALL_USERS:
@@ -59,6 +73,8 @@ const usersReducer = (state = initialState, action) => {
       return setUserToEdirData(state, action);
     case actionsTypes.UPDATE_USER_CALLBACK:
       return updateCurrentUser(state, action);
+    case actionsTypes.DELETE_USER:
+      return setDeleteUserState(state, action);
     default:
       return state;
   }

@@ -1,7 +1,10 @@
+@import "../css/designSystem.scss";
+
 .switchContainer {
   display: flex;
 
   .mainSwitch {
     flex: 1;
+    background-color: #f5f8f9;
   }
 }

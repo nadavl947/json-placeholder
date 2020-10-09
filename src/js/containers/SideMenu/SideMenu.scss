@@ -51,10 +51,15 @@
   }
 
   .sideMenuHandlerSection {
-    background-color: $gradientD1;
+    background-color: $gradientL4;
     width: 1px;
-    margin: 0 25px;
+    padding: 0 20px;
     position: relative;
+    border-right: 1px solid $gradientD1;
+
+    &.sideMenuOpen {
+      background-color: $gradientL5;
+    }
 
     .btn {
       button {

@@ -1,15 +1,72 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import * as actions from "../../store/actions/actions";
+
+import MovieItem from "../../components/MoviesMain/MovieItem/MovieItem";
+
+import "./MoviesMain.scss";
 
 class MoviesMain extends Component {
   state = {};
 
+  componentDidMount() {
+    const { getAllMovies } = this.props;
+    getAllMovies();
+  }
+
   render() {
+    const { moviesList, numberOfPagination, loadMoeMovies } = this.props;
+
     return (
-      <div>
-        <h1>MoviesMain</h1>
+      <div className="moviesMain">
+        {!moviesList.length ? (
+          <div className="spinner">
+            <img src="/img/spiner2.gif" alt="/" />
+          </div>
+        ) : (
+          <div className="moviesList">
+            {moviesList.map((movie) => {
+              return <MovieItem movieData={movie} key={movie._id} />;
+            })}
+          </div>
+        )}
+        <div className="loadMoreBtn">
+          <button
+            type="button"
+            onClick={() => loadMoeMovies(numberOfPagination + 1)}
+          >
+            More...
+          </button>
+        </div>
       </div>
     );
   }
 }
 
-export default MoviesMain;
+const mapStateToProps = (state) => {
+  return {
+    moviesList: state.moviesReducer.moviesList,
+    numberOfPagination: state.moviesReducer.numberOfPagination,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllMovies: () => dispatch(actions.getAllMoviesAction()),
+    loadMoeMovies: (numberOfPagination) =>
+      dispatch(actions.loadMoreMoviesActions(numberOfPagination)),
+  };
+};
+
+MoviesMain.propTypes = {
+  getAllMovies: PropTypes.func.isRequired,
+  loadMoeMovies: PropTypes.func.isRequired,
+  numberOfPagination: PropTypes.number,
+};
+
+MoviesMain.defaultProps = {
+  numberOfPagination: null,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesMain);

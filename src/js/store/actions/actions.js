@@ -2,6 +2,13 @@ export {
   getAllUsersAction,
   getEditUserData,
   updateUserDateAction,
+  deleteUserAction,
 } from "./usersActions";
 
-export { openEditUserAction } from "./mainActions";
+export {
+  getAllMoviesAction,
+  loadMoreMoviesActions,
+  getMovieDetailsAction,
+} from "./moviesActions";
+
+export { openEditUserAction, openMovieDetailsModalAction } from "./mainActions";

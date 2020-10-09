@@ -12,6 +12,13 @@ const SideMenu = () => {
       <div className={cn("menuContent", isSideMenuOpen && "menuOpen")}>
         <NavLink to="/">
           <div className="linkItem">
+            <i className="fa fa-home" />
+            <h3>Home</h3>
+          </div>
+        </NavLink>
+
+        <NavLink to="/UsersMain">
+          <div className="linkItem">
             <i className="fa fa-users" />
             <h3>Users JSON</h3>
           </div>
@@ -24,7 +31,12 @@ const SideMenu = () => {
           </div>
         </NavLink>
       </div>
-      <div className="sideMenuHandlerSection">
+      <div
+        className={cn(
+          "sideMenuHandlerSection",
+          isSideMenuOpen && "sideMenuOpen"
+        )}
+      >
         <div className={cn("btn", isSideMenuOpen && "openMenu")}>
           <button
             type="button"

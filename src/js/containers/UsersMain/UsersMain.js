@@ -21,7 +21,12 @@ class UsersMain extends Component {
     return (
       <div className="usersMain">
         {!usersList.length ? (
-          <h1>UsersMain</h1>
+          <div className="spinner">
+            <img
+              src="/img/spiner2.gif"
+              alt="/"
+            />
+          </div>
         ) : (
           <div className="usersList">
             {usersList.map((user) => {

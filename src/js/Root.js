@@ -10,24 +10,30 @@ const MoviesMain = React.lazy(() =>
   import("./containers/MoviesMain/MoviesMain")
 );
 const UsersMain = React.lazy(() => import("./containers/UsersMain/UsersMain"));
+const HomeMain = React.lazy(() => import("./containers/HomeMain/HomeMain"));
 const SideMenu = React.lazy(() => import("./containers/SideMenu/SideMenu"));
 const EditUserModal = React.lazy(() =>
   import("./components/UsersMain/EditUserModal/EditUserModal")
 );
+const MovieDetails = React.lazy(() =>
+  import("./components/MoviesMain/MovieDetails/MovieDetails")
+);
 
 const root = (props) => {
-  const { isEditUserVisible } = props;
+  const { isEditUserVisible, isMovieDetailsVisible } = props;
 
   return (
     <div>
       {isEditUserVisible && <EditUserModal />}
+      {isMovieDetailsVisible && <MovieDetails />}
       <Header />
       <div className="body">
         <div className="switchContainer">
           <SideMenu />
           <div className="mainSwitch">
             <Switch>
-              <UsersMain exact path="/" />
+              <HomeMain exact path="/" />
+              <UsersMain exact path="/UsersMain" />
               <MoviesMain exact path="/MoviesMain" />
             </Switch>
           </div>
@@ -39,6 +45,7 @@ const root = (props) => {
 
 const mapStateToProps = (state) => ({
   isEditUserVisible: state.mainReducer.isEditUserModalVisible,
+  isMovieDetailsVisible: state.mainReducer.isMovieDetailsModalVisible,
 });
 
 export default connect(mapStateToProps, null)(root);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import * as actions from "../../../store/actions/actions";
@@ -9,8 +9,26 @@ const EditUserModal = () => {
   const dispatch = useDispatch();
 
   const userData = useSelector((state) => state.usersReducer.selectedUserData);
-
+  const isEditUserModalVisible = useSelector(
+    (state) => state.mainReducer.isEditUserModalVisible
+  );
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
+  const editPopoverRef = useRef(null);
+
+  useEffect(() => {
+    const eventListener = (e) => {
+      if (isEditUserModalVisible) {
+        if (!editPopoverRef.current.contains(e.target)) {
+          dispatch(actions.openEditUserAction());
+        }
+      }
+    };
+    document.addEventListener("mousedown", eventListener);
+    return () => {
+      document.removeEventListener("mousedown", eventListener);
+    };
+  }, [isEditUserModalVisible, dispatch]);
 
   const [userImg, setUserImg] = useState(userData.img);
   const [userName, setUserName] = useState(userData.name);
@@ -37,7 +55,7 @@ const EditUserModal = () => {
 
   return (
     <div className="editUserModalContainer">
-      <div className="editUserModalContent">
+      <div className="editUserModalContent" ref={editPopoverRef}>
         <div className="editModalClose">
           <button
             type="click"
@@ -108,13 +126,21 @@ const EditUserModal = () => {
             <button
               type="button"
               onClick={() => setIsDeleteOpen(!isDeleteOpen)}
+              className={!isDeleteOpen ? "redTextBtn" : "blueTextBtn"}
             >
-              Delete
+              {!isDeleteOpen ? "Delete" : "Keep"}
             </button>
             {isDeleteOpen && (
               <>
                 <p>Are you sure you want to delete this user?</p>
-                <button type="button" className="delteSureBtn">
+                <button
+                  type="button"
+                  className="delteSureBtn"
+                  onClick={() => {
+                    dispatch(actions.deleteUserAction(userData._id));
+                    dispatch(actions.openEditUserAction());
+                  }}
+                >
                   Yes
                 </button>
               </>

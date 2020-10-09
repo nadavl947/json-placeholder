@@ -7,6 +7,10 @@ const updateUserCallback = (data) => ({
   type: actionsTypes.UPDATE_USER_CALLBACK,
   data,
 });
+const deleteUserCallback = (deleteId) => ({
+  type: actionsTypes.DELETE_USER,
+  deleteId,
+});
 
 export const getAllUsersAction = () => async (dispatch) => {
   try {
@@ -47,6 +51,17 @@ export const updateUserDateAction = (userData) => async (dispatch) => {
       }
     );
     dispatch(updateUserCallback(userData));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteUserAction = (deleteId) => async (dispatch) => {
+  try {
+    await axios.delete(
+      `https://blog-mongo-nadav.herokuapp.com/users/${deleteId}`
+    );
+    dispatch(deleteUserCallback(deleteId));
   } catch (error) {
     console.log(error);
   }

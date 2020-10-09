@@ -1,7 +1,7 @@
 @import "../../../../css/designSystem.scss";
 
 .editUserModalContainer {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
@@ -121,6 +121,10 @@
           color: $dangeros;
         }
 
+        .blueTextBtn {
+          color: $secondary;
+        }
+
         p {
           margin: 0 10px;
           white-space: nowrap;
@@ -134,7 +138,7 @@
           width: 380px;
 
           p {
-          transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
             opacity: 1;
           }
         }

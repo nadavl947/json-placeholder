@@ -1,0 +1,42 @@
+@import "../../../css/designSystem.scss";
+
+.moviesMain {
+  margin: 20px 50px;
+
+  .spinner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .moviesList {
+    text-align: center;
+  }
+
+  .loadMoreBtn {
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px 25px;
+
+    button {
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background-color: $primary;
+      box-shadow: $box-shadow4;
+      color: $gradientL5;
+      height: 40px;
+      display: flex;
+      padding: 0 15px;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      font-size: 18px;
+      font-weight: 600;
+
+      &:hover {
+        background-color: $primaryD2;
+      }
+      &:active {
+        background-color: $primaryD3;
+      }
+    }
+  }
+}
