@@ -34,7 +34,7 @@ const MovieDetails = () => {
   const createYellowStars = () => {
     const yellowArray = [];
     for (var i = 0; i < Math.floor(movieDetails.rating.average); i++) {
-      yellowArray.push(<i className="fa fa-star yelloStar yellowStart" />);
+      yellowArray.push(<i className="fa fa-star yelloStar yellowStart" key={i}/>);
     }
     return yellowArray.map((item) => item);
   };
@@ -42,7 +42,7 @@ const MovieDetails = () => {
   const createGreyStarts = () => {
     const yellowArray = [];
     for (var i = 0; i < 10 - Math.floor(movieDetails.rating.average); i++) {
-      yellowArray.push(<i className="fa fa-star" />);
+      yellowArray.push(<i className="fa fa-star" key={i} />);
     }
     return yellowArray.map((item) => item);
   };

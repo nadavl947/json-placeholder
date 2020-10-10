@@ -1,0 +1,154 @@
+@import "../../../../css/designSystem.scss";
+
+.createPostContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  animation: uploadAnimation 0.3s ease-in-out 0s 1;
+  backdrop-filter: blur(2px);
+
+  .createPostContent {
+    width: 30%;
+    background-color: $gradientL5;
+    border-radius: 12px;
+    box-shadow: $box-shadow1;
+    animation: scalAnimations 0.3s ease-in-out 0s 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $gradient;
+
+    .createPostBox {
+      .createPostBoxHeader {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+
+        > h3 {
+          font-weight: 600;
+          font-size: 18px;
+        }
+
+        img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius: 12px;
+          box-shadow: $box-shadow1;
+        }
+
+        .postCreatorDetails {
+          flex: 1;
+          margin: 0 20px;
+
+          h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+          }
+
+          p {
+            font-size: 16px;
+            font-weight: normal;
+            color: $gradientD2;
+          }
+        }
+      }
+
+      .createPostBoxInputs {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+
+        textarea,
+        input {
+          border: solid 1px $gradientL1;
+          border-radius: 8px;
+          width: 100%;
+          padding: 4px 8px;
+          margin-bottom: 10px;
+          line-height: 20px;
+          color: $gradientD5;
+          transition: all 0.2s ease-in-out;
+          font-size: 14px;
+          height: 30px;
+          outline: none !important;
+          resize: none;
+
+          &:hover {
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+          }
+          &:focus {
+            box-shadow: 0 0 3px 1px $primary;
+          }
+        }
+        textarea {
+          height: 120px;
+        }
+      }
+
+      .bottomBtns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .resetBtn {
+          border-radius: 12px;
+          box-shadow: $box-shadow4;
+          color: $gradientD4;
+          border: solid 1px $dangeros;
+          height: 30px;
+          padding: 0 10px;
+          transition: all 0.2s ease-in-out;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 65px;
+          overflow: hidden;
+          font-size: 14px;
+          color: $dangeros;
+        }
+
+        .createBtn {
+          border-radius: 12px;
+          background-color: $primary;
+          box-shadow: $box-shadow4;
+          color: $gradientL5;
+          height: 30px;
+          padding: 0 10px;
+          transition: all 0.3s ease-in-out;
+          font-size: 14px;
+
+          &:hover {
+            background-color: $primaryD2;
+          }
+          &:active {
+            background-color: $primaryD3;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes uploadAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scalAnimations {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}

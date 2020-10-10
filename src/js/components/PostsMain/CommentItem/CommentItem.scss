@@ -1,0 +1,31 @@
+@import "../../../../css/designSystem.scss";
+
+.commentItem {
+  border-top: 1px solid $gradientD1;
+  margin: 2px 20px;
+  padding: 10px;
+
+  .commentHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      box-shadow: $box-shadow1;
+    }
+
+    h3 {
+      font-weight: 600;
+      font-size: 18px;
+      margin: 0 15px;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    color: $gradientD4;
+  }
+}

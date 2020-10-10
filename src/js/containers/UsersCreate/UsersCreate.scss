@@ -1,0 +1,191 @@
+@import "../../../css/designSystem.scss";
+
+.userCreate {
+  margin: 50px;
+
+  .formSection {
+    display: flex;
+    justify-content: center;
+    background-color: $gradientL5;
+    margin: 0 auto;
+    box-shadow: $box-shadow1;
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid $gradient;
+    height: 550px;
+    width: 100%;
+    max-width: 1200px;
+    transition: all 0.1s ease-in-out;
+
+    &.formSubmited {
+      transition: all 0.3s ease-in-out;
+      width: 400px;
+      height: 300px;
+
+      .afterSubmit {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        img {
+          margin: 0 auto 50px;
+        }
+
+        button {
+          border-radius: 12px;
+          background-color: $primary;
+          box-shadow: $box-shadow4;
+          color: $gradientL5;
+          height: 30px;
+          padding: 0 10px;
+          transition: all 0.3s ease-in-out;
+          font-size: 16px;
+          font-weight: 600;
+
+          &:hover {
+            background-color: $primaryD2;
+          }
+          &:active {
+            background-color: $primaryD3;
+          }
+        }
+      }
+    }
+
+    input {
+      border: solid 1px $gradientL2;
+      border-radius: 8px;
+      width: 100%;
+      padding: 4px 8px;
+      margin-bottom: 20px;
+      line-height: 20px;
+      color: $gradientD5;
+      transition: all 0.1s ease-in-out;
+      font-size: 14px;
+
+      &:hover {
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+      }
+      &:focus {
+        box-shadow: 0 0 3px 1px $primary;
+      }
+    }
+
+    .avatarSection {
+      flex: 1;
+      display: flex;
+
+      > h3 {
+        font-size: 60px;
+        margin: 0;
+        color: $secondary;
+      }
+
+      .avatarContent {
+        margin: 0 30px;
+        width: 400px;
+
+        h3 {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 20px;
+          margin-bottom: 30px;
+        }
+
+        img {
+          width: 60%;
+          height: 50%;
+          object-fit: cover;
+          margin: 0 auto 30px;
+          border-radius: 12px;
+          box-shadow: $box-shadow1;
+        }
+      }
+    }
+
+    .divider {
+      width: 1px;
+      height: 100%;
+      background-color: $gradientD2;
+      margin: 0 50px;
+    }
+
+    .detailSection {
+      flex: 1;
+      display: flex;
+
+      > h3 {
+        font-size: 60px;
+        margin: 0;
+        color: $secondary;
+      }
+
+      .detailsContent {
+        margin: 0 30px;
+        width: 400px;
+
+        h3 {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        .inputItem {
+          margin-bottom: 15px;
+          p {
+            margin: 0 10px 5px;
+            font-size: 14px;
+            color: $gradientD4;
+            font-weight: 600;
+          }
+        }
+
+        .bottomBtns {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .resetBtn {
+            border-radius: 12px;
+            box-shadow: $box-shadow4;
+            color: $gradientD4;
+            border: solid 1px $dangeros;
+            height: 30px;
+            padding: 0 10px;
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 65px;
+            overflow: hidden;
+            font-size: 14px;
+            color: $dangeros;
+          }
+
+          .createBtn {
+            border-radius: 12px;
+            background-color: $primary;
+            box-shadow: $box-shadow4;
+            color: $gradientL5;
+            height: 30px;
+            padding: 0 10px;
+            transition: all 0.3s ease-in-out;
+            font-size: 14px;
+
+            &:hover {
+              background-color: $primaryD2;
+            }
+            &:active {
+              background-color: $primaryD3;
+            }
+          }
+        }
+      }
+    }
+  }
+}

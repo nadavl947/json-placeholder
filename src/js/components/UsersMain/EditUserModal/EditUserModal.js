@@ -67,7 +67,7 @@ const EditUserModal = () => {
         <div className="mainContentSection">
           <div className="avatarSection">
             <div className="avatar">
-              <img src={userImg} alt={userName} />
+              <img src={userImg || "/img/anonymous.png"} alt={userName} />
             </div>
           </div>
           <div className="divider" />
@@ -100,7 +100,7 @@ const EditUserModal = () => {
                   onChange={(event) => setUserWork(event.target.value)}
                 />
               </div>
-              <div className="formItem">
+              {/* <div className="formItem">
                 <p>BirtDay</p>
                 <input
                   type="text"
@@ -108,7 +108,7 @@ const EditUserModal = () => {
                   value={userBirtDay}
                   onChange={(event) => setUserBirtDay(event.target.value)}
                 />
-              </div>
+              </div> */}
               <div className="formItem">
                 <p>Age</p>
                 <input

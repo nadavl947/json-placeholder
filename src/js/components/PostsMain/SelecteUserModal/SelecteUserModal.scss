@@ -1,0 +1,115 @@
+@import "../../../../css/designSystem.scss";
+
+.selectUserContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  animation: uploadAnimation 0.3s ease-in-out 0s 1;
+  backdrop-filter: blur(2px);
+
+  .selectUserContent {
+    width: fit-content;
+    background-color: $gradientL5;
+    border-radius: 12px;
+    box-shadow: $box-shadow1;
+    animation: scalAnimations 0.3s ease-in-out 0s 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > h3 {
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .usersList {
+      display: flex;
+      flex-direction: column;
+      max-height: 400px;
+      overflow-y: scroll;
+      background-color: $gradientL5;
+      box-shadow: $box-shadow1;
+      border-radius: 8px;
+      border: 1px solid $gradient;
+      padding: 12px;
+      margin-bottom: 30px;
+
+      .userItemBtn {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        width: 280px;
+        border-radius: 8px;
+
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 12px;
+          box-shadow: $box-shadow1;
+        }
+
+        h3 {
+          font-size: 14px;
+          margin: 0 15px;
+        }
+
+        &:hover {
+          background-color: $gradientL4;
+        }
+
+        &.selectedUser {
+          background-color: $primaryL4 !important;
+        }
+      }
+    }
+
+    .selectBtn {
+      border-radius: 12px;
+      background-color: $primary;
+      box-shadow: $box-shadow4;
+      color: $gradientL5;
+      height: 30px;
+      padding: 0 10px;
+      transition: all 0.3s ease-in-out;
+      font-size: 14px;
+      opacity: 0;
+
+      &:hover {
+        background-color: $primaryD2;
+      }
+      &:active {
+        background-color: $primaryD3;
+      }
+
+      &.activeBtn {
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes uploadAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scalAnimations {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}

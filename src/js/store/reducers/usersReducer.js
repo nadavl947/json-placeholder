@@ -65,6 +65,26 @@ const setDeleteUserState = (state, action) => {
   };
 };
 
+const setNewUserState = (state, action) => {
+  const { data } = action;
+  const { usersList } = state;
+
+  const newUserData = {
+    img: data.avatarUrl,
+    name: data.userName,
+    birtDay: "",
+    work: data.userWork,
+    email: data.userEmail,
+    age: data.userAge,
+    _id: data._id,
+  };
+
+  return {
+    ...state,
+    usersList: [...usersList, newUserData],
+  };
+};
+
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionsTypes.SET_ALL_USERS:
@@ -75,6 +95,8 @@ const usersReducer = (state = initialState, action) => {
       return updateCurrentUser(state, action);
     case actionsTypes.DELETE_USER:
       return setDeleteUserState(state, action);
+    case actionsTypes.CREATE_NEW_USER:
+      return setNewUserState(state, action);
     default:
       return state;
   }

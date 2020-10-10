@@ -3,6 +3,7 @@ export {
   getEditUserData,
   updateUserDateAction,
   deleteUserAction,
+  createNewUserAction,
 } from "./usersActions";
 
 export {
@@ -11,4 +12,17 @@ export {
   getMovieDetailsAction,
 } from "./moviesActions";
 
-export { openEditUserAction, openMovieDetailsModalAction } from "./mainActions";
+export {
+  openEditUserAction,
+  openMovieDetailsModalAction,
+  selecteCurrentUser,
+  openSelectUserModalAction,
+  openCreatePostModal,
+} from "./mainActions";
+
+export {
+  getAllPostsAction,
+  createNewCommentAction,
+  createNewPostAction,
+  deletePostAction,
+} from "./postsActions";

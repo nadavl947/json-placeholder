@@ -11,6 +11,10 @@ const deleteUserCallback = (deleteId) => ({
   type: actionsTypes.DELETE_USER,
   deleteId,
 });
+const createNewUserCallback = (data) => ({
+  type: actionsTypes.CREATE_NEW_USER,
+  data,
+});
 
 export const getAllUsersAction = () => async (dispatch) => {
   try {
@@ -62,6 +66,26 @@ export const deleteUserAction = (deleteId) => async (dispatch) => {
       `https://blog-mongo-nadav.herokuapp.com/users/${deleteId}`
     );
     dispatch(deleteUserCallback(deleteId));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createNewUserAction = (userData) => async (dispatch) => {
+  try {
+    const response = await axios.post(
+      "https://blog-mongo-nadav.herokuapp.com/users",
+      {
+        img: userData.avatarUrl,
+        name: userData.userName,
+        birtDay: "",
+        work: userData.userWork,
+        email: userData.userEmail,
+        age: +userData.userAge,
+      }
+    );
+    const { data = {} } = response;
+    dispatch(createNewUserCallback({ ...userData, _id: data.insertedId }));
   } catch (error) {
     console.log(error);
   }

@@ -10,26 +10,42 @@ const SideMenu = () => {
   return (
     <div className="sideMenu">
       <div className={cn("menuContent", isSideMenuOpen && "menuOpen")}>
-        <NavLink to="/">
-          <div className="linkItem">
-            <i className="fa fa-home" />
-            <h3>Home</h3>
-          </div>
-        </NavLink>
+        <div className="topLinks">
+          <NavLink to="/">
+            <div className="linkItem">
+              <i className="fa fa-home" />
+              <h3>Home</h3>
+            </div>
+          </NavLink>
 
-        <NavLink to="/UsersMain">
-          <div className="linkItem">
-            <i className="fa fa-users" />
-            <h3>Users JSON</h3>
-          </div>
-        </NavLink>
+          <NavLink to="/UsersMain">
+            <div className="linkItem">
+              <i className="fa fa-users" />
+              <h3>Users JSON</h3>
+            </div>
+          </NavLink>
 
-        <NavLink to="/MoviesMain">
-          <div className="linkItem">
-            <i className="fa fa-film" />
-            <h3>Movies JSON</h3>
-          </div>
-        </NavLink>
+          <NavLink to="/MoviesMain">
+            <div className="linkItem">
+              <i className="fa fa-film" />
+              <h3>Movies JSON</h3>
+            </div>
+          </NavLink>
+          <NavLink to="/PostsMain">
+            <div className="linkItem">
+              <i className="fa fa-comments" />
+              <h3>Posts JSON</h3>
+            </div>
+          </NavLink>
+        </div>
+        <div className="bottomLinks">
+          <NavLink to="/UsersCreate">
+            <div className="linkItemBottom">
+              <i className="fa fa-users" />
+              <h3>Create Users</h3>
+            </div>
+          </NavLink>
+        </div>
       </div>
       <div
         className={cn(

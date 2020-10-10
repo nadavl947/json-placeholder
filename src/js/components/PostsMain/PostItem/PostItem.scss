@@ -1,0 +1,146 @@
+@import "../../../../css/designSystem.scss";
+
+.postItem {
+  background-color: $primaryL4;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid $primaryD1;
+  box-shadow: $box-shadow1;
+  margin-bottom: 30px;
+  position: relative;
+
+  .deletePost {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background-color: $dangeros;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+
+    i {
+      color: $gradientL5;
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: $dangerosD1;
+    }
+    &:active {
+      background-color: $dangerosD2;
+    }
+  }
+
+  &:hover .deletePost {
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+	}
+
+
+  .postHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      box-shadow: $box-shadow1;
+    }
+
+    h3 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .creatorDetails {
+      flex: 1;
+      margin: 0 20px;
+
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: normal;
+        color: $gradientD2;
+      }
+    }
+  }
+
+  .postsContent {
+    margin-bottom: 15px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+      color: $gradientD4;
+    }
+  }
+
+  .divider {
+    height: 1px;
+    margin: 30px 0;
+    background-color: $gradientD2;
+  }
+
+  .commentsSection {
+    background-color: $gradientL5;
+    margin: 0 auto;
+    box-shadow: $box-shadow3;
+    border-radius: 12px;
+    padding: 20px 50px;
+    border: 1px solid $gradient;
+    width: 90%;
+
+    textarea {
+      border: solid 1px $gradientL1;
+      border-radius: 8px;
+      width: 100%;
+      padding: 4px 8px;
+      margin-bottom: 10px;
+      line-height: 20px;
+      color: $gradientD5;
+      transition: all 0.2s ease-in-out;
+      font-size: 14px;
+      height: 30px;
+      outline: none !important;
+      resize: none;
+
+      &:hover {
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+      }
+      &:focus {
+        box-shadow: 0 0 3px 1px $primary;
+        height: 60px;
+      }
+    }
+
+    .commentBtn {
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: 600;
+      color: $primary;
+      opacity: 0;
+      transition: all 0.2s ease-in-out;
+
+      &.commentBrnVisible {
+        opacity: 1;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+}

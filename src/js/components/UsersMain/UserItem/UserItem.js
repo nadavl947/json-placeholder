@@ -19,7 +19,7 @@ const UserItem = (props) => {
         dispatch(actions.getEditUserData(userData._id));
       }}
     >
-      <img src={userData.img} alt={userData.name} />
+      <img src={userData.img || "/img/anonymous.png"} alt={userData.name} />
       <div className="editCover">
         <div className="whiteEditSection">
           <h3>Edit</h3>

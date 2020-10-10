@@ -11,6 +11,9 @@
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .linkItem {
       margin-bottom: 10px;
@@ -40,11 +43,39 @@
       }
     }
 
+    .linkItemBottom {
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background-color: $secondary;
+      box-shadow: $box-shadow4;
+      color: $gradientL5;
+      height: 30px;
+      display: flex;
+      padding: 0 10px;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+
+      &:hover {
+        background-color: $secondaryD2;
+      }
+      &:active {
+        background-color: $secondaryD3;
+      }
+
+      h3 {
+        white-space: nowrap;
+        overflow: hidden;
+        font-weight: 600;
+        margin: 0 10px;
+      }
+    }
+
     &.menuOpen {
       transition: all 0.3s ease-in-out;
       width: 200px;
       padding: 20px;
-      .linkItem {
+      .linkItem, .linkItemBottom {
         opacity: 1;
       }
     }

@@ -1,0 +1,69 @@
+@import "../../../css/designSystem.scss";
+
+.postsMain {
+  margin: 50px auto;
+  width: 70%;
+
+  .topPostBtns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+    .selectUserBtn {
+      border-radius: 12px;
+      background-color: $secondary;
+      box-shadow: $box-shadow4;
+      color: $gradientL5;
+      height: 30px;
+      display: flex;
+      padding: 0 10px;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      font-weight: 600;
+      font-size: 16px;
+
+      &:hover {
+        background-color: $secondaryD2;
+      }
+      &:active {
+        background-color: $secondaryD3;
+      }
+    }
+
+    .createNewPost {
+      border-radius: 12px;
+      background-color: $primary;
+      box-shadow: $box-shadow4;
+      color: $gradientL5;
+      height: 30px;
+      display: flex;
+      padding: 0 10px;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      font-weight: 600;
+      font-size: 16px;
+
+      &:hover {
+        background-color: $primaryD2;
+      }
+      &:active {
+        background-color: $primaryD3;
+      }
+
+      &.disBtn {
+        background-color: $gradientD1 !important;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+
+  .postsListsSection {
+    background-color: $gradientL5;
+    margin: 0 auto;
+    box-shadow: $box-shadow1;
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid $gradient;
+  }
+}
