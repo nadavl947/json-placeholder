@@ -9,12 +9,14 @@ import PostItem from "../../components/PostsMain/PostItem/PostItem";
 import "./PostsMain.scss";
 
 class PostsMain extends Component {
-  state = {};
+  state = {
+    isPostsLoading: true,
+  };
 
   componentDidMount() {
     const { getAllUsers, getAllPosts } = this.props;
     getAllUsers();
-    getAllPosts();
+    getAllPosts(() => this.setState({ isPostsLoading: false }));
   }
 
   handleAddNewComment = (postId, commentText, commentCreator) => {
@@ -30,61 +32,61 @@ class PostsMain extends Component {
       openSelectUser,
       openCreatePostModal,
     } = this.props;
+    const { isPostsLoading } = this.state;
+
+    if (isPostsLoading) {
+      return (
+        <div className="spinner">
+          <img src="/img/spiner2.gif" alt="/" />
+        </div>
+      );
+    }
 
     return (
       <div className="postsMain">
+        <div className="topPostBtns">
+          <button
+            type="button"
+            className="selectUserBtn"
+            onClick={() => openSelectUser()}
+          >
+            Select System User
+          </button>
+          <button
+            type="button"
+            className={cn("createNewPost", !currentSystemUser._id && "disBtn")}
+            disabled={!currentSystemUser._id}
+            onClick={() => openCreatePostModal()}
+          >
+            Create New Post
+          </button>
+        </div>
         {!postsList.length ? (
           <div className="spinner">
-            <img src="/img/spiner2.gif" alt="/" />
+            <img src="/img/noDataFond.png" alt="/" />
           </div>
         ) : (
-          <>
-            <div className="topPostBtns">
-              <button
-                type="button"
-                className="selectUserBtn"
-                onClick={() => openSelectUser()}
-              >
-                Select System User
-              </button>
-              <button
-                type="button"
-                className={cn(
-                  "createNewPost",
-                  !currentSystemUser._id && "disBtn"
-                )}
-                disabled={!currentSystemUser._id}
-                onClick={() => openCreatePostModal()}
-              >
-                Create New Post
-              </button>
-            </div>
-            <div className="postsListsSection">
-              {postsList.map((post) => {
-                return (
-                  <PostItem
-                    key={post._id}
-                    postData={post}
-                    usersList={usersList}
-                    creatorData={usersList.find(
-                      (user) => user._id === post.creator
-                    )}
-                    handleAddNewComment={(
+          <div className="postsListsSection">
+            {postsList.map((post) => {
+              return (
+                <PostItem
+                  key={post._id}
+                  postData={post}
+                  usersList={usersList}
+                  creatorData={usersList.find(
+                    (user) => user._id === post.creator
+                  )}
+                  handleAddNewComment={(postId, commentText, commentCreator) =>
+                    this.handleAddNewComment(
                       postId,
                       commentText,
                       commentCreator
-                    ) =>
-                      this.handleAddNewComment(
-                        postId,
-                        commentText,
-                        commentCreator
-                      )
-                    }
-                  />
-                );
-              })}
-            </div>
-          </>
+                    )
+                  }
+                />
+              );
+            })}
+          </div>
         )}
       </div>
     );
@@ -102,7 +104,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllUsers: () => dispatch(actions.getAllUsersAction()),
-    getAllPosts: () => dispatch(actions.getAllPostsAction()),
+    getAllPosts: (changeLoadingState) =>
+      dispatch(actions.getAllPostsAction(changeLoadingState)),
     openSelectUser: () => dispatch(actions.openSelectUserModalAction()),
     openCreatePostModal: () => dispatch(actions.openCreatePostModal()),
     addNewComment: (postId, commentText, commentCreator) =>

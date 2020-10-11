@@ -28,7 +28,14 @@ class UsersCreate extends Component {
 
   handleFormSubmit = () => {
     const { createNewUser } = this.props;
-    const { avatarUrl, userName, userEmail, userWork, userAge, isFormSubmited } = this.state;
+    const {
+      avatarUrl,
+      userName,
+      userEmail,
+      userWork,
+      userAge,
+      isFormSubmited,
+    } = this.state;
     createNewUser({ avatarUrl, userName, userEmail, userWork, userAge });
     this.setState({ isFormSubmited: !isFormSubmited });
   };
@@ -67,10 +74,10 @@ class UsersCreate extends Component {
                 <div className="avatarContent">
                   <h3>Select Avatar</h3>
                   <p>
-                    It looks like there is an active recruitment agency with the
-                    same company number you inserted. A request has been sent to
-                    approve your joining to: Lior, Ron, Yona and Victoria Once
-                    approved, we will let you know
+                    After creating a new user, you could find and edit him in
+                    the Users JSON section. Another feature is the create or
+                    comment a post by this new user. please note that avater
+                    management is only by Url for now.
                   </p>
                   <img src={avatarUrl || "/img/anonymous.png"} alt="/" />
                   <input

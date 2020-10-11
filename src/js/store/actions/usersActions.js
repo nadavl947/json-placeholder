@@ -16,13 +16,14 @@ const createNewUserCallback = (data) => ({
   data,
 });
 
-export const getAllUsersAction = () => async (dispatch) => {
+export const getAllUsersAction = (changeLoadingState) => async (dispatch) => {
   try {
     const response = await axios.get(
       "https://blog-mongo-nadav.herokuapp.com/users"
     );
     const { data = {} } = response;
     dispatch(allUsersCallback(data));
+    changeLoadingState();
   } catch (error) {
     console.log(error);
   }

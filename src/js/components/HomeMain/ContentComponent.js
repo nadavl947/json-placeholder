@@ -1,26 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import cn from "classnames";
 
 import "./ContentComponent.scss";
 
 const ContentComponent = (props) => {
-  const {
-    contentTitle,
-    contentText,
-    showImage,
-    responseImage,
-  } = props;
+  const { contentTitle, contentText, showImage, responseImage } = props;
 
   return (
-    <div className="homeContentContainer">
+    <div className={cn("homeContentContainer", !showImage && "homeContainer")}>
       <div className="textSection">
         <h3>{contentTitle}</h3>
-        <p>{contentText}</p>
+        {contentText}
       </div>
       <div className="imageSection">
         {showImage ? (
           <div className="showImages">
-            <img src={responseImage} alt="/" />
+            {responseImage.map((image, i) => {
+              return <img src={image} alt="/" key={i} />;
+            })}
           </div>
         ) : (
           <div className="logo">
@@ -35,7 +33,7 @@ const ContentComponent = (props) => {
 ContentComponent.propTypes = {
   contentTitle: PropTypes.string.isRequired,
   contentText: PropTypes.string.isRequired,
-  responseImage: PropTypes.string.isRequired,
+  responseImage: PropTypes.arrayOf(PropTypes.string).isRequired,
   showImage: PropTypes.bool.isRequired,
 };
 

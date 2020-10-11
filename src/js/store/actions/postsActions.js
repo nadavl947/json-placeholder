@@ -12,20 +12,24 @@ const addNewCommentCallback = (data) => ({
   data,
 });
 
-const deletepostCallback = (postId) => ({ type: actionsTypes.DELETE_POST, postId });
+const deletepostCallback = (postId) => ({
+  type: actionsTypes.DELETE_POST,
+  postId,
+});
 
 const createNewPostCallback = (data) => ({
   type: actionsTypes.CREATE_NEW_POST,
   data,
 });
 
-export const getAllPostsAction = () => async (dispatch) => {
+export const getAllPostsAction = (changeLoadingState) => async (dispatch) => {
   try {
     const response = await axios.get(
       "https://blog-mongo-nadav.herokuapp.com/posts"
     );
     const { data = {} } = response;
     dispatch(getAllPostsCallback(data));
+    changeLoadingState();
   } catch (error) {
     console.log(error);
   }

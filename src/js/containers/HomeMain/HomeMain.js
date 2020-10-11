@@ -18,11 +18,31 @@ class HomeMain extends Component {
         component = (
           <ContentComponent
             contentTitle="Users JSON"
-            contentText="It looks like there is an active recruitment agency with the same company number you inserted.
-      A request has been sent to approve your joining to: Lior, Ron, Yona and Victoria
-      Once approved, we will let you know"
+            contentText={
+              <p>
+                The first json collection is the <span> Users Collection </span>
+                . In here the user can find and manipulate a list of users and
+                there details.
+                <br />
+                The Users route contains 4 API's: <br /> <br />
+                <span>Get</span>
+                <br />
+                <span>Update</span>
+                <br />
+                <span>Create</span>
+                <br />
+                <span>Delete</span>
+                <br /> <br />* notice that currently users Avatar is only by
+                LinkdInUrl's...
+              </p>
+            }
             showImage={true}
-            responseImage="/img/code/usersCode2.png"
+            responseImage={[
+              "/img/usersCode/usersCodeGet.png",
+              "/img/usersCode/usersCodeUpadte.png",
+              "/img/usersCode/usersCodeDelete.png",
+              "/img/usersCode/usersCodeCreate.png",
+            ]}
           />
         );
         break;
@@ -30,11 +50,63 @@ class HomeMain extends Component {
         component = (
           <ContentComponent
             contentTitle="Movies JSON"
-            contentText="It looks like there is an active recruitment agency with the same company number you inserted.
-      A request has been sent to approve your joining to: Lior, Ron, Yona and Victoria
-      Once approved, we will let you know"
+            contentText={
+              <p>
+                The <span> Movies collection </span> contains the majority of
+                the raw unmanipulated data in this placeholder.
+                <br />
+                In here the user will find data for over 250 TV seris - Title,
+                Network, Rating and more... This API will also allow the user to
+                work with a Pagination format, Selectin the amount of data to
+                recieve each AJAX. <br />
+                <br />
+                The Movies route contains 2 API's: <br /> <br />
+                <span>Get</span>
+                <br />
+                <span>Load More</span>
+                <br />
+              </p>
+            }
             showImage={true}
-            responseImage="/img/code/moviesCode.png"
+            responseImage={[
+              "/img/moviesCode/moviesCodeGet.png",
+              "/img/moviesCode/moviesCodeLoadMore.png",
+            ]}
+          />
+        );
+        break;
+      case "posts":
+        component = (
+          <ContentComponent
+            contentTitle="Posts JSON"
+            contentText={
+              <p>
+                The <span> Posts collection </span> contains the most
+                interesting and complex data <span> JSON-PLACHOLDER </span> can
+                offer.
+                <br />
+                Here the user can find Posts and Comments that relate to a
+                specific user from the users collections. meaning that handling
+                this collection will ask the user to select a specific person
+                from the Users list before making any changes.
+                <br />
+                The Posts route contains 4 API's: <br /> <br />
+                <span>Get</span>
+                <br />
+                <span>Create </span> - Post
+                <br />
+                <span>Create </span> - Comment
+                <br />
+                <span>Delete </span> - Post only by the currect User
+              </p>
+            }
+            showImage={true}
+            responseImage={[
+              "/img/postsCode/postsCodeGet.png",
+              "/img/postsCode/postsCodeCreate.png",
+              "/img/postsCode/postsCodeCreatePost.png",
+              "/img/postsCode/postsCodeDelete.png",
+            ]}
           />
         );
         break;
@@ -42,9 +114,17 @@ class HomeMain extends Component {
         component = (
           <ContentComponent
             contentTitle="Welcome to JSON Placeholder!"
-            contentText="It looks like there is an active recruitment agency with the same company number you inserted.
-          A request has been sent to approve your joining to: Lior, Ron, Yona and Victoria
-          Once approved, we will let you know"
+            contentText={
+              <p>
+                It looks like this days finding goot dynamic dummy data is not
+                an easy task... <br />
+                For that reason I created my on
+                <span> JSON-PLACHOLDER! </span>. In here the user will find a
+                lot of dummy data which the most of it he could change to fit is
+                own needs! <br /> <br />
+                <span>Good Luck!!</span>
+              </p>
+            }
             showImage={false}
             responseImage=""
           />
@@ -74,6 +154,13 @@ class HomeMain extends Component {
             className={contentType === "movies" && "activeTab"}
           >
             Movies
+          </button>
+          <button
+            type="button"
+            onClick={() => this.setState({ contentType: "posts" })}
+            className={contentType === "posts" && "activeTab"}
+          >
+            Posts
           </button>
         </div>
         <div className="contentContainer">{component}</div>

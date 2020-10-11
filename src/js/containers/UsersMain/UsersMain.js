@@ -8,24 +8,32 @@ import UserItem from "../../components/UsersMain/UserItem/UserItem";
 import "./UsersMain.scss";
 
 class UsersMain extends Component {
-  state = {};
+  state = {
+    isUsersLoading: true,
+  };
 
   componentDidMount() {
     const { getAllUser } = this.props;
-    getAllUser();
+    getAllUser(() => this.setState({ isUsersLoading: false }));
   }
 
   render() {
     const { usersList } = this.props;
+    const { isUsersLoading } = this.state;
+
+    if (isUsersLoading) {
+      return (
+        <div className="spinner">
+          <img src="/img/spiner2.gif" alt="/" />
+        </div>
+      );
+    }
 
     return (
       <div className="usersMain">
         {!usersList.length ? (
           <div className="spinner">
-            <img
-              src="/img/spiner2.gif"
-              alt="/"
-            />
+            <img src="/img/noDataFond.png" alt="/" />
           </div>
         ) : (
           <div className="usersList">
@@ -47,8 +55,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllUser: () => {
-      dispatch(actions.getAllUsersAction());
+    getAllUser: (changeLoadingState) => {
+      dispatch(actions.getAllUsersAction(changeLoadingState));
     },
   };
 };
