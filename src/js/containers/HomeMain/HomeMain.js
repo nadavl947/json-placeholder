@@ -20,7 +20,7 @@ class HomeMain extends Component {
             contentTitle="Users JSON"
             contentText={
               <p>
-                The first json collection is the <span> Users Collection </span>
+                The first json collection is the <span> Users Collection</span>
                 . In here the user can find and manipulate a list of users and
                 there details.
                 <br />
@@ -57,8 +57,8 @@ class HomeMain extends Component {
                 <br />
                 In here the user will find data for over 250 TV seris - Title,
                 Network, Rating and more... This API will also allow the user to
-                work with a Pagination format, Selectin the amount of data to
-                recieve each AJAX. <br />
+                work with a Pagination format, Selecting the amount of data to
+                recieve on each AJAX. <br />
                 <br />
                 The Movies route contains 2 API's: <br /> <br />
                 <span>Get</span>
@@ -86,7 +86,7 @@ class HomeMain extends Component {
                 offer.
                 <br />
                 Here the user can find Posts and Comments that relate to a
-                specific user from the users collections. meaning that handling
+                specific user from the users collection. Meaning that handling
                 this collection will ask the user to select a specific person
                 from the Users list before making any changes.
                 <br />
@@ -116,11 +116,11 @@ class HomeMain extends Component {
             contentTitle="Welcome to JSON Placeholder!"
             contentText={
               <p>
-                It looks like this days finding goot dynamic dummy data is not
+                It looks like this days finding good dynamic dummy data is not
                 an easy task... <br />
-                For that reason I created my on
-                <span> JSON-PLACHOLDER! </span>. In here the user will find a
-                lot of dummy data which the most of it he could change to fit is
+                For that reason I created my own
+                <span> JSON-PLACHOLDER!</span> In here the user will find a
+                lot of dummy data which he could change to fit his
                 own needs! <br /> <br />
                 <span>Good Luck!!</span>
               </p>
