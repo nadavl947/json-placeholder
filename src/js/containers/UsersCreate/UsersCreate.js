@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import cn from "classnames";
 import * as actions from "../../store/actions/actions";
 
+import UploadAvatar from "../../components/UsersCreate/UploadAvatar";
+
 import "./UsersCreate.scss";
 
 class UsersCreate extends Component {
@@ -14,6 +16,7 @@ class UsersCreate extends Component {
     userWork: "",
     userAge: "",
     isFormSubmited: false,
+    uploadAvatarType: "upload",
   };
 
   onResetFields = () => {
@@ -48,6 +51,7 @@ class UsersCreate extends Component {
       userWork,
       userAge,
       isFormSubmited,
+      uploadAvatarType,
     } = this.state;
 
     return (
@@ -76,17 +80,61 @@ class UsersCreate extends Component {
                   <p>
                     After creating a new user, you could find and edit him in
                     the Users JSON section. Another feature is the create or
-                    comment a post by this new user. please note that avater
-                    management is only by Url for now.
+                    comment a post by this new user.
                   </p>
                   <img src={avatarUrl || "/img/anonymous.png"} alt="/" />
-                  <input
-                    value={avatarUrl}
-                    type="text"
-                    onChange={(e) =>
-                      this.setState({ avatarUrl: e.target.value })
-                    }
-                  />
+
+                  <div className="avatarSlider">
+                    <div
+                      className={cn(
+                        "sliderBack",
+                        uploadAvatarType === "upload"
+                          ? "uploadPosition"
+                          : undefined
+                      )}
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        this.setState({ uploadAvatarType: "webUrl" })
+                      }
+                      className={
+                        uploadAvatarType === "webUrl"
+                          ? "activeSlider"
+                          : undefined
+                      }
+                    >
+                      From web
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        this.setState({ uploadAvatarType: "upload" })
+                      }
+                      className={
+                        uploadAvatarType === "upload"
+                          ? "activeSlider"
+                          : undefined
+                      }
+                    >
+                      Upload
+                    </button>
+                  </div>
+
+                  {uploadAvatarType === "webUrl" ? (
+                    <div className="urlInput">
+                      <p>Please past an image url</p>
+                      <input
+                        value={avatarUrl}
+                        type="text"
+                        onChange={(e) =>
+                          this.setState({ avatarUrl: e.target.value })
+                        }
+                      />
+                    </div>
+                  ) : (
+                    <UploadAvatar />
+                  )}
                 </div>
               </div>
               <div className="divider" />

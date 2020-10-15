@@ -12,7 +12,7 @@
     border-radius: 12px;
     padding: 40px;
     border: 1px solid $gradient;
-    height: 550px;
+    height: 600px;
     width: 100%;
     max-width: 1200px;
     transition: all 0.1s ease-in-out;
@@ -98,12 +98,62 @@
         }
 
         img {
-          width: 60%;
-          height: 50%;
+          width: 50%;
+          height: 40%;
           object-fit: cover;
           margin: 0 auto 30px;
           border-radius: 12px;
           box-shadow: $box-shadow1;
+        }
+
+        .avatarSlider {
+          width: 250px;
+          margin: 0 auto 15px;
+          display: flex;
+          border: solid 2px $gradientL2;
+          border-radius: 8px;
+          justify-content: space-between;
+          position: relative;
+          padding: 2px;
+
+          .sliderBack {
+            background-color: $secondary;
+            height: 40px;
+            width: 125px;
+            border-radius: 8px;
+            position: absolute;
+            left: 2px;
+            transition: all 0.1s ease-in-out;
+
+            &.uploadPosition {
+              left: calc(50% - 4px);
+            }
+          }
+          button {
+            height: 40px;
+            background-color: transparent;
+            width: 125px;
+            border-radius: 8px;
+            font-size: 16px;
+            z-index: 1;
+            transition: all 0.1s ease-in-out;
+          }
+
+          .activeSlider {
+            color: $gradientL5;
+            font-weight: 600;
+            transition: all 0.1s ease-in-out;
+          }
+        }
+
+        .urlInput {
+          text-align: center;
+
+          > p {
+            font-size: 16px;
+            line-height: 20px;
+            margin-bottom: 10px;
+          }
         }
       }
     }

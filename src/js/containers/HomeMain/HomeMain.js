@@ -32,8 +32,6 @@ class HomeMain extends Component {
                 <span>Create</span>
                 <br />
                 <span>Delete</span>
-                <br /> <br />* notice that currently users Avatar is only by
-                LinkdInUrl's...
               </p>
             }
             showImage={true}
