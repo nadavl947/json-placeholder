@@ -133,7 +133,11 @@ class UsersCreate extends Component {
                       />
                     </div>
                   ) : (
-                    <UploadAvatar />
+                    <UploadAvatar
+                      setUserAvatar={(newUrl) =>
+                        this.setState({ avatarUrl: newUrl })
+                      }
+                    />
                   )}
                 </div>
               </div>
