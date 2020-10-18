@@ -16,7 +16,7 @@ class UsersCreate extends Component {
     userWork: "",
     userAge: "",
     isFormSubmited: false,
-    uploadAvatarType: "upload",
+    uploadAvatarType: "webUrl",
   };
 
   onResetFields = () => {
