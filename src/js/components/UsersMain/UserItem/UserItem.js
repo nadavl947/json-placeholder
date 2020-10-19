@@ -11,21 +11,23 @@ const UserItem = (props) => {
   const dispatch = useDispatch();
 
   return (
-    <button
-      type="button"
-      className="userItem"
-      onClick={() => {
-        dispatch(actions.openEditUserAction());
-        dispatch(actions.getEditUserData(userData._id));
-      }}
-    >
+    <div className="userItem">
       <img src={userData.img || "/img/anonymous.png"} alt={userData.name} />
       <div className="editCover">
         <div className="whiteEditSection">
-          <h3>Edit</h3>
+          <button
+            className="editBtn"
+            type="button"
+            onClick={() => {
+              dispatch(actions.openEditUserAction());
+              dispatch(actions.getEditUserData(userData._id));
+            }}
+          >
+            Edit
+          </button>
         </div>
       </div>
-    </button>
+    </div>
   );
 };
 

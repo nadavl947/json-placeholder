@@ -8,6 +8,7 @@
   height: 250px;
   margin: 10px;
   position: relative;
+  display: inline-block;
 
   img {
     width: 100%;
@@ -27,7 +28,6 @@
 
     .whiteEditSection {
       border-radius: 8px;
-      background-color: $gradientL5;
       width: 100%;
       height: 0;
       position: absolute;
@@ -36,12 +36,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
 
-      h3 {
-        color: $primary;
+      button {
+        border-radius: 12px;
+        width: 80%;
+        height: 40px;
         font-size: 16px;
         font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
+
+      .editBtn {
+        border: 2px solid $primary;
+        color: $gradientL5;
+      }
+
     }
   }
 
@@ -49,7 +61,7 @@
     .editCover {
       opacity: 1;
       .whiteEditSection {
-        height: 40%;
+        height: 100%;
       }
     }
   }
