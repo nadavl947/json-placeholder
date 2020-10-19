@@ -1,0 +1,9 @@
+{
+  "sideMenu": {
+    "home_tab": "ראשי",
+    "users_tab": "משתמשים",
+    "movies_tab": "סרטים",
+    "posts_tab": "פוסטים",
+    "create_user_tab": "יצירת משתמש"
+  }
+}

@@ -7,8 +7,15 @@ import thunk from "redux-thunk";
 
 import reducers from "./js/store/reducers/reducers";
 import Root from "./js/Root";
+import "./i18n.js";
 
 import "./css/styles.scss";
+
+// i18next.on('languageChanged', lng => {
+// 	const body = document.getElementsByTagName('body')[0];
+// 	if (lng === 'he') body.setAttribute('dir', 'rtl');
+// 	else body.setAttribute('dir', 'ltr');
+// });
 
 const rootReducer = combineReducers(reducers);
 
@@ -20,7 +27,7 @@ const App = () => (
       <Suspense
         fallback={<div style={{ textAlign: "center", margin: "70px auto" }} />}
       >
-          <Root />
+        <Root />
       </Suspense>
     </BrowserRouter>
   </Provider>

@@ -1,0 +1,9 @@
+{
+  "sideMenu": {
+    "home_tab": "Home",
+    "users_tab": "Users JSON",
+    "movies_tab": "Movies JSON",
+    "posts_tab": "Posts JSON",
+    "create_user_tab": "Create Users"
+  }
+}
