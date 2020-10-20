@@ -7,15 +7,15 @@ import thunk from "redux-thunk";
 
 import reducers from "./js/store/reducers/reducers";
 import Root from "./js/Root";
-import "./i18n.js";
+import i18n from './i18n';
 
 import "./css/styles.scss";
 
-// i18next.on('languageChanged', lng => {
-// 	const body = document.getElementsByTagName('body')[0];
-// 	if (lng === 'he') body.setAttribute('dir', 'rtl');
-// 	else body.setAttribute('dir', 'ltr');
-// });
+i18n.on('languageChanged', lng => {
+	const body = document.getElementsByTagName('body')[0];
+	if (lng === 'he') body.setAttribute('dir', 'rtl');
+	else body.setAttribute('dir', 'ltr');
+});
 
 const rootReducer = combineReducers(reducers);
 

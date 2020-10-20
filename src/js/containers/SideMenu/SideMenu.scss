@@ -75,7 +75,8 @@
       transition: all 0.3s ease-in-out;
       width: 200px;
       padding: 20px;
-      .linkItem, .linkItemBottom {
+      .linkItem,
+      .linkItemBottom {
         opacity: 1;
       }
     }
@@ -115,6 +116,35 @@
       &.openMenu {
         i {
           transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+[dir="rtl"] {
+  .sideMenu {
+    .sideMenuHandlerSection {
+      border-right: none;
+      border-left: 1px solid $gradientD1;
+
+      &.sideMenuOpen {
+        background-color: $gradientL5;
+      }
+
+      .btn {
+        button {
+          right: 25px;
+
+          i {
+            transform: rotate(180deg);
+          }
+        }
+
+        &.openMenu {
+          i {
+            transform: rotate(0deg);
+          }
         }
       }
     }

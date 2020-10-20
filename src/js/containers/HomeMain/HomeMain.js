@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import cn from "classnames";
+import { withTranslation } from "react-i18next";
 import ContentComponent from "../../components/HomeMain/ContentComponent";
 
 import "./HomeMain.scss";
@@ -11,23 +11,25 @@ class HomeMain extends Component {
 
   render() {
     const { contentType } = this.state;
+    const { t } = this.props;
 
     const userProps = {
-      contentTitle: "Users JSON",
+      contentTitle: t("homeMain.users_title"),
       contentText: (
         <p>
-          The first json collection is the <span> Users Collection</span>
-          . In here the user can find and manipulate a list of users and there
-          details.
+          {t("homeMain.users_text_1")}
+          <span>{t("homeMain.users_text_2")}</span>
+          {t("homeMain.users_text_3")}
           <br />
-          The Users route contains 4 API's: <br /> <br />
-          <span>Get</span>
+          {t("homeMain.users_text_4")}
+          <br /> <br />
+          <span>{t("homeMain.get")}</span>
           <br />
-          <span>Update</span>
+          <span>{t("homeMain.update")}</span>
           <br />
-          <span>Create</span>
+          <span>{t("homeMain.create")}</span>
           <br />
-          <span>Delete</span>
+          <span>{t("homeMain.delete")}</span>
         </p>
       ),
       showImage: true,
@@ -40,21 +42,21 @@ class HomeMain extends Component {
     };
 
     const moviesProps = {
-      contentTitle: "Movies JSON",
+      contentTitle: t("homeMain.movies_title"),
       contentText: (
         <p>
-          The <span> Movies collection </span> contains the majority of the raw
-          unmanipulated data in this placeholder.
+          {t("homeMain.movies_text_1")}
+          <span>{t("homeMain.movies_text_2")}</span>
+          {t("homeMain.movies_text_3")}
           <br />
-          In here the user will find data for over 250 TV seris - Title,
-          Network, Rating and more... This API will also allow the user to work
-          with a Pagination format, Selecting the amount of data to recieve on
-          each AJAX. <br />
+          {t("homeMain.movies_text_4")}
           <br />
-          The Movies route contains 2 API's: <br /> <br />
-          <span>Get</span>
           <br />
-          <span>Load More</span>
+          {t("homeMain.movies_text_5")}
+          <br /> <br />
+          <span>{t("homeMain.get")}</span>
+          <br />
+          <span>{t("homeMain.movies_text_6")}</span>
           <br />
         </p>
       ),
@@ -66,25 +68,26 @@ class HomeMain extends Component {
     };
 
     const postsProps = {
-      contentTitle: "Posts JSON",
+      contentTitle: t("homeMain.posts_title"),
       contentText: (
         <p>
-          The <span> Posts collection </span> contains the most interesting and
-          complex data <span> JSON-PLACHOLDER </span> can offer.
+          {t("homeMain.posts_text_1")}
+          <span>{t("homeMain.posts_text_2")}</span>
+          {t("homeMain.posts_text_3")}
+          <span>{t("homeMain.posts_text_4")}</span>
+          {t("homeMain.posts_text_5")}
           <br />
-          Here the user can find Posts and Comments that relate to a specific
-          user from the users collection. Meaning that handling this collection
-          will ask the user to select a specific person from the Users list
-          before making any changes.
+          {t("homeMain.posts_text_6")}
           <br />
-          The Posts route contains 4 API's: <br /> <br />
-          <span>Get</span>
+          {t("homeMain.posts_text_7")}
+          <br /> <br />
+          <span>{t("homeMain.get")}</span>
           <br />
-          <span>Create </span> - Post
+          <span>{t("homeMain.create")}</span> - {t("homeMain.post")}
           <br />
-          <span>Create </span> - Comment
+          <span>{t("homeMain.create")}</span> - {t("homeMain.comment")}
           <br />
-          <span>Delete </span> - Post only by the currect User
+          <span>{t("homeMain.delete")}</span> - {t("homeMain.posts_text_8")}
         </p>
       ),
       showImage: true,
@@ -97,15 +100,16 @@ class HomeMain extends Component {
     };
 
     const homeProps = {
-      contentTitle: "Welcome to JSON Placeholder!",
+      contentTitle: t("homeMain.about_title"),
       contentText: (
         <p>
-          It looks like this days finding good dynamic dummy data is not an easy
-          task... <br />
-          For that reason I created my own
-          <span> JSON-PLACHOLDER!</span> In here the user will find a lot of
-          dummy data which he could change to fit his own needs! <br /> <br />
-          <span>Good Luck!!</span>
+          {t("homeMain.about_text_1")}
+          <br />
+          {t("homeMain.about_text_2")}
+          <span>{t("homeMain.about_text_3")}</span>
+          {t("homeMain.about_text_4")}
+          <br /> <br />
+          <span>{t("homeMain.about_text_5")}</span>
         </p>
       ),
       showImage: false,
@@ -120,28 +124,28 @@ class HomeMain extends Component {
             onClick={() => this.setState({ contentType: "about" })}
             className={contentType === "about" && "activeTab"}
           >
-            About
+            {t("homeMain.about")}
           </button>
           <button
             type="button"
             onClick={() => this.setState({ contentType: "users" })}
             className={contentType === "users" && "activeTab"}
           >
-            Users
+            {t("homeMain.users")}
           </button>
           <button
             type="button"
             onClick={() => this.setState({ contentType: "movies" })}
             className={contentType === "movies" && "activeTab"}
           >
-            Movies
+            {t("homeMain.movies")}
           </button>
           <button
             type="button"
             onClick={() => this.setState({ contentType: "posts" })}
             className={contentType === "posts" && "activeTab"}
           >
-            Posts
+            {t("homeMain.posts")}
           </button>
         </div>
         <div className="contentContainer">
@@ -155,4 +159,4 @@ class HomeMain extends Component {
   }
 }
 
-export default HomeMain;
+export default withTranslation()(HomeMain);
