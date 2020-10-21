@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import cn from "classnames";
+import { withTranslation } from "react-i18next";
 import * as actions from "../../../store/actions/actions";
 
 import CommentItem from "../CommentItem/CommentItem";
@@ -9,7 +10,7 @@ import CommentItem from "../CommentItem/CommentItem";
 import "./PostItem.scss";
 
 const PostItem = (props) => {
-  const { postData, creatorData, usersList, handleAddNewComment } = props;
+  const { postData, creatorData, usersList, handleAddNewComment, t } = props;
 
   const [newCommentValue, setNewCommentValue] = useState("");
   const currentSystemUser = useSelector(
@@ -59,7 +60,7 @@ const PostItem = (props) => {
             type="text"
             value={newCommentValue}
             onChange={(e) => setNewCommentValue(e.target.value)}
-            placeholder="Add a Comment..."
+            placeholder={t("postItem.addComment_lable")}
             onFocus={() => onInputFocus()}
           />
           <button
@@ -74,7 +75,7 @@ const PostItem = (props) => {
               setNewCommentValue("");
             }}
           >
-            Comment
+            {t("postItem.comment_btn")}
           </button>
           {postData.comments.map((comment, index) => {
             return (
@@ -98,6 +99,7 @@ PostItem.propTypes = {
   creatorData: PropTypes.shape({}),
   usersList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleAddNewComment: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 PostItem.defaultProps = {
@@ -110,4 +112,4 @@ PostItem.defaultProps = {
   newCommentText: "",
 };
 
-export default PostItem;
+export default withTranslation()(PostItem);

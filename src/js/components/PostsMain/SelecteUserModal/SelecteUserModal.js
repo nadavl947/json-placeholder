@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import cn from "classnames";
+import { withTranslation } from "react-i18next";
 import * as actions from "../../../store/actions/actions";
 
 import "./SelecteUserModal.scss";
 
 const SelecteUserModal = (props) => {
+  const { t } = props;
   const usersList = useSelector((state) => state.usersReducer.usersList);
   const isUserSelectModalOpen = useSelector(
     (state) => state.mainReducer.isSelectUserVisible
@@ -38,7 +40,7 @@ const SelecteUserModal = (props) => {
   return (
     <div className="selectUserContainer">
       <div className="selectUserContent" ref={selectUserRef}>
-        <h3>To add post or comment please select a user</h3>
+        <h3>{t("selectUserModal.modalTitle")}</h3>
         <div className="usersList">
           {usersList.map((user) => {
             return (
@@ -62,11 +64,11 @@ const SelecteUserModal = (props) => {
           className={cn("selectBtn", userSelectedId && "activeBtn")}
           onClick={() => handleSelect()}
         >
-          Select
+          {t("selectUserModal.select_btn")}
         </button>
       </div>
     </div>
   );
 };
 
-export default SelecteUserModal;
+export default withTranslation()(SelecteUserModal);

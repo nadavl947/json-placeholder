@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import cn from "classnames";
 import * as actions from "../../store/actions/actions";
@@ -54,6 +55,8 @@ class UsersCreate extends Component {
       uploadAvatarType,
     } = this.state;
 
+    const { t } = this.props;
+
     return (
       <div className="userCreate">
         <div className={cn("formSection", isFormSubmited && "formSubmited")}>
@@ -68,7 +71,7 @@ class UsersCreate extends Component {
                   this.onResetFields();
                 }}
               >
-                Add More Users
+                {t("createUserMain.addMore_btn")}
               </button>
             </div>
           ) : (
@@ -76,12 +79,8 @@ class UsersCreate extends Component {
               <div className="avatarSection">
                 <h3>1</h3>
                 <div className="avatarContent">
-                  <h3>Select Avatar</h3>
-                  <p>
-                    After creating a new user, you could find and edit him in
-                    the Users JSON section. Another feature is the create or
-                    comment a post by this new user.
-                  </p>
+                  <h3>{t("createUserMain.avatarTitle")}</h3>
+                  <p>{t("createUserMain.avatarText")}</p>
                   <img src={avatarUrl || "/img/anonymous.png"} alt="/" />
 
                   <div className="avatarSlider">
@@ -104,7 +103,7 @@ class UsersCreate extends Component {
                           : undefined
                       }
                     >
-                      From web
+                      {t("createUserMain.upload_web")}
                     </button>
                     <button
                       type="button"
@@ -117,13 +116,13 @@ class UsersCreate extends Component {
                           : undefined
                       }
                     >
-                      Upload
+                      {t("createUserMain.upload")}
                     </button>
                   </div>
 
                   {uploadAvatarType === "webUrl" ? (
                     <div className="urlInput">
-                      <p>Please past an image url</p>
+                      <p>{t("createUserMain.img_url_lable")}</p>
                       <input
                         value={avatarUrl}
                         type="text"
@@ -145,9 +144,9 @@ class UsersCreate extends Component {
               <div className="detailSection">
                 <h3>2</h3>
                 <div className="detailsContent">
-                  <h3>Users Details</h3>
+                  <h3>{t("createUserMain.deteilsTitle")}</h3>
                   <div className="inputItem">
-                    <p>Contact Name</p>
+                    <p>{t("createUserMain.name_lable")}</p>
                     <input
                       type="text"
                       value={userName}
@@ -157,7 +156,7 @@ class UsersCreate extends Component {
                     />
                   </div>
                   <div className="inputItem">
-                    <p>Email</p>
+                    <p>{t("createUserMain.email_lable")}</p>
                     <input
                       type="text"
                       value={userEmail}
@@ -167,7 +166,7 @@ class UsersCreate extends Component {
                     />
                   </div>
                   <div className="inputItem">
-                    <p>Place of Work</p>
+                    <p>{t("createUserMain.work_lable")}</p>
                     <input
                       type="text"
                       value={userWork}
@@ -177,7 +176,7 @@ class UsersCreate extends Component {
                     />
                   </div>
                   <div className="inputItem">
-                    <p>Age</p>
+                    <p>{t("createUserMain.age_lable")}</p>
                     <input
                       type="number"
                       value={userAge}
@@ -192,14 +191,14 @@ class UsersCreate extends Component {
                       className="resetBtn"
                       onClick={() => this.onResetFields()}
                     >
-                      Reset
+                      {t("createUserMain.rest_btn")}
                     </button>
                     <button
                       type="button"
                       className="createBtn"
                       onClick={() => this.handleFormSubmit()}
                     >
-                      Create
+                      {t("createUserMain.create_btn")}
                     </button>
                   </div>
                 </div>
@@ -221,6 +220,9 @@ const mapDispatchToProps = (dispatch) => {
 
 UsersCreate.propTypes = {
   createNewUser: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(UsersCreate);
+export default withTranslation()(
+  connect(null, mapDispatchToProps)(UsersCreate)
+);

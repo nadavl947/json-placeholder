@@ -10,21 +10,22 @@
   align-items: center;
   padding: 0 30px;
   z-index: 999;
+  direction: ltr !important;
 
   .slider {
     background-color: $gradientL5;
     width: 150px;
-    height: 32px;
+    height: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
     position: relative;
-    
+
     .sliderBack {
       position: absolute;
       width: 75px;
-      height: 30px;
+      height: 23px;
       border-radius: 8px;
       background-color: $secondary;
       left: calc(0% + 2px);
@@ -41,7 +42,7 @@
       font-weight: 600;
       text-align: center;
       width: 75px;
-      height: 30px;
+      height: 23px;
       border-radius: 8px;
 
       &.activeLang {
@@ -67,3 +68,6 @@
     }
   }
 }
+
+// [dir="rtl"] {
+// }

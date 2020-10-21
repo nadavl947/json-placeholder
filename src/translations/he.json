@@ -44,5 +44,58 @@
     "users_text_2": " משתמשים",
     "users_text_3": ". כאן יוכל המשתמש למצוא ולשנות רשימה של משתמשים",
     "users_text_4": "המשתמשים מכילים 4 ראוטים: "
+  },
+  "userItem": {
+    "edit": "ערוך"
+  },
+  "userEditModal": {
+    "name_lable": "שם משתמש",
+    "email_lable": "אימייל",
+    "work_lable": "מקום עבודה",
+    "age_lable": "גיל",
+    "delete_btn": "מחיקה",
+    "update_btn": "עידכון",
+    "delete_text": "האם למחוק את המשתמש הזה?",
+    "yes": "מחיקה",
+    "keep": "ביטול"
+  },
+  "moviesMain": {
+    "more": "עוד..."
+  },
+  "postsMain": {
+    "select_user_btn": "בחר משתמש מהמערכת",
+    "create_post_btn": "צור פוסט חדש"
+  },
+  "postItem": {
+    "addComment_lable": "הוספת תגובה...",
+    "comment_btn": "שלח"
+  },
+  "selectUserModal": {
+    "modalTitle": "על מנת להוסיף פוסט או תגובה יש לבחור משתמש",
+    "select_btn": "בחירה"
+  },
+  "createPostModal": {
+    "postTitle_placeholder": "כותרת...",
+    "postText_placeholder": "תוכן...",
+    "create_btn": "יצירה",
+    "rest_btn": "איפוס"
+  },
+  "createUserMain": {
+    "addMore_btn": "הוספת משתמשים נוספים",
+    "avatarTitle": "בחירת תמונה",
+    "avatarText": "לאחר יצירת משתמש חדש, כל הדאטה אודות אותו המשתמש יהיה זמין הן לעריכה והן ליצירה של פוסטים ותגובות חדשות.",
+    "upload_web": "כתובת url",
+    "upload": "אעלאה",
+    "img_url_lable": "אנא אעבר כתובת תמונה",
+    "deteilsTitle": "פרטי משתמש",
+    "name_lable": "שם משתמש",
+    "email_lable": "אימייל",
+    "work_lable": "מקום עבודה",
+    "age_lable": "גיל",
+    "create_btn": "יצירה",
+    "rest_btn": "איפוס"
+  },
+  "uploadAvatar": {
+    "upload_btn": "בחר תמונה"
   }
 }

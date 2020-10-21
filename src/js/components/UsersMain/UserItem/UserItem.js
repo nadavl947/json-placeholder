@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
 import * as actions from "../../../store/actions/actions";
 
 import "./UserItem.scss";
 
 const UserItem = (props) => {
-  const { userData } = props;
+  const { userData, t } = props;
 
   const dispatch = useDispatch();
 
@@ -23,7 +24,7 @@ const UserItem = (props) => {
               dispatch(actions.getEditUserData(userData._id));
             }}
           >
-            Edit
+            {t("userItem.edit")}
           </button>
         </div>
       </div>
@@ -32,10 +33,11 @@ const UserItem = (props) => {
 };
 
 UserItem.propTypes = {
+  t: PropTypes.func.isRequired,
   userData: PropTypes.shape({
     img: PropTypes.string,
     userData: PropTypes.string,
   }),
 };
 
-export default UserItem;
+export default withTranslation()(UserItem);

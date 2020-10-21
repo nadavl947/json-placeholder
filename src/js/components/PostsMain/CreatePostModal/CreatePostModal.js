@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../store/actions/actions";
+import { withTranslation } from "react-i18next";
 import moment from "moment";
 
 import "./CreatePostModal.scss";
 
-const CreatePostModal = () => {
+const CreatePostModal = (props) => {
+  const { t } = props;
   const systemUserData = useSelector(
     (state) => state.mainReducer.currentSystemUser
   );
@@ -61,13 +63,13 @@ const CreatePostModal = () => {
             <input
               type="text"
               value={postTitle}
-              placeholder="Post title..."
+              placeholder={t("createPostModal.postTitle_placeholder")}
               onChange={(e) => setPostTitle(e.target.value)}
             />
             <textarea
               type="text"
               value={postText}
-              placeholder="Post Text..."
+              placeholder={t("createPostModal.postText_placeholder")}
               onChange={(e) => setPostText(e.target.value)}
             />
           </div>
@@ -80,14 +82,14 @@ const CreatePostModal = () => {
                 setPostText("");
               }}
             >
-              Reset
+              {t("createPostModal.rest_btn")}
             </button>
             <button
               type="button"
               className="createBtn"
               onClick={() => onCreatePostSubmit()}
             >
-              Create
+              {t("createPostModal.create_btn")}
             </button>
           </div>
         </div>
@@ -96,4 +98,4 @@ const CreatePostModal = () => {
   );
 };
 
-export default CreatePostModal;
+export default withTranslation()(CreatePostModal);

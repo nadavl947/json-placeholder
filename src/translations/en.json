@@ -44,5 +44,58 @@
     "users_text_2": " Users Collection",
     "users_text_3": ". In here the user can find and manipulate a list of users and there details.",
     "users_text_4": "The Users route contains 4 API's: "
+  },
+  "userItem": {
+    "edit": "Edit"
+  },
+  "userEditModal": {
+    "name_lable": "Contact Name",
+    "email_lable": "Email",
+    "work_lable": "Place of Work",
+    "age_lable": "Age",
+    "delete_btn": "Delete",
+    "update_btn": "Update",
+    "delete_text": "Are you sure you want to delete this user?",
+    "yes": "Yes",
+    "keep": "Keep"
+  },
+  "moviesMain": {
+    "more": "More..."
+  },
+  "postsMain": {
+    "select_user_btn": "Select System User",
+    "create_post_btn": "Create New Post"
+  },
+  "postItem": {
+    "addComment_lable": "Add a Comment...",
+    "comment_btn": "Comment"
+  },
+  "selectUserModal": {
+    "modalTitle": "To add post or comment please select a user",
+    "select_btn": "Select"
+  },
+  "createPostModal": {
+    "postTitle_placeholder": "Post Title...",
+    "postText_placeholder": "Post Text...",
+    "create_btn": "Create",
+    "rest_btn": "Reset"
+  },
+  "createUserMain": {
+    "addMore_btn": "Add More Users",
+    "avatarTitle": "Select Avatar",
+    "avatarText": "After creating a new user, you could find and edit him in the Users JSON section. Another feature is the create or comment a post by this new user.",
+    "upload_web": "From Web",
+    "upload": "Upload",
+    "img_url_lable": "Please past an image url",
+    "deteilsTitle": "Users Details",
+    "name_lable": "Contact Name",
+    "email_lable": "Email",
+    "work_lable": "Place of Work",
+    "age_lable": "Age",
+    "create_btn": "Create",
+    "rest_btn": "Reset"
+  },
+  "uploadAvatar": {
+    "upload_btn": "Selcet a File"
   }
 }

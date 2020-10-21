@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
 import * as actions from "../../store/actions/actions";
 
 import MovieItem from "../../components/MoviesMain/MovieItem/MovieItem";
@@ -16,7 +17,7 @@ class MoviesMain extends Component {
   }
 
   render() {
-    const { moviesList, numberOfPagination, loadMoeMovies } = this.props;
+    const { moviesList, numberOfPagination, loadMoeMovies, t } = this.props;
 
     return (
       <div className="moviesMain">
@@ -36,7 +37,7 @@ class MoviesMain extends Component {
             type="button"
             onClick={() => loadMoeMovies(numberOfPagination + 1)}
           >
-            More...
+            {t("moviesMain.more")}
           </button>
         </div>
       </div>
@@ -69,4 +70,6 @@ MoviesMain.defaultProps = {
   numberOfPagination: null,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesMain);
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(MoviesMain)
+);

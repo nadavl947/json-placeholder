@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { withTranslation } from "react-i18next";
 import cn from "classnames";
 import * as actions from "../../../store/actions/actions";
 
 import "./EditUserModal.scss";
 
-const EditUserModal = () => {
+const EditUserModal = (props) => {
   const dispatch = useDispatch();
+  const { t } = props;
 
   const userData = useSelector((state) => state.usersReducer.selectedUserData);
   const isEditUserModalVisible = useSelector(
@@ -74,7 +76,7 @@ const EditUserModal = () => {
           <div className="formSection">
             <form>
               <div className="formItem">
-                <p>Contact Name</p>
+                <p>{t("userEditModal.name_lable")}</p>
                 <input
                   type="text"
                   name="userName"
@@ -83,7 +85,7 @@ const EditUserModal = () => {
                 />
               </div>
               <div className="formItem">
-                <p>Email</p>
+                <p>{t("userEditModal.email_lable")}</p>
                 <input
                   type="text"
                   name="userEmail"
@@ -92,7 +94,7 @@ const EditUserModal = () => {
                 />
               </div>
               <div className="formItem">
-                <p>Place of Work</p>
+                <p>{t("userEditModal.work_lable")}</p>
                 <input
                   type="text"
                   name="userWork"
@@ -110,7 +112,7 @@ const EditUserModal = () => {
                 />
               </div> */}
               <div className="formItem">
-                <p>Age</p>
+                <p>{t("userEditModal.age_lable")}</p>
                 <input
                   type="number"
                   name="userAge"
@@ -128,11 +130,13 @@ const EditUserModal = () => {
               onClick={() => setIsDeleteOpen(!isDeleteOpen)}
               className={!isDeleteOpen ? "redTextBtn" : "blueTextBtn"}
             >
-              {!isDeleteOpen ? "Delete" : "Keep"}
+              {!isDeleteOpen
+                ? t("userEditModal.delete_btn")
+                : t("userEditModal.keep")}
             </button>
             {isDeleteOpen && (
               <>
-                <p>Are you sure you want to delete this user?</p>
+                <p>{t("userEditModal.delete_text")}</p>
                 <button
                   type="button"
                   className="delteSureBtn"
@@ -141,7 +145,7 @@ const EditUserModal = () => {
                     dispatch(actions.openEditUserAction());
                   }}
                 >
-                  Yes
+                  {t("userEditModal.yes")}
                 </button>
               </>
             )}
@@ -151,7 +155,7 @@ const EditUserModal = () => {
             className="updateBtn"
             onClick={(e) => handelFormSubmit(e)}
           >
-            Update
+            {t("userEditModal.update_btn")}
           </button>
         </div>
       </div>
@@ -159,4 +163,4 @@ const EditUserModal = () => {
   );
 };
 
-export default EditUserModal;
+export default withTranslation()(EditUserModal);

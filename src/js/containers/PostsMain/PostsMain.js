@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import cn from "classnames";
+import { withTranslation } from "react-i18next";
 import * as actions from "../../store/actions/actions";
 
 import PostItem from "../../components/PostsMain/PostItem/PostItem";
@@ -31,6 +32,7 @@ class PostsMain extends Component {
       currentSystemUser,
       openSelectUser,
       openCreatePostModal,
+      t,
     } = this.props;
     const { isPostsLoading } = this.state;
 
@@ -50,7 +52,7 @@ class PostsMain extends Component {
             className="selectUserBtn"
             onClick={() => openSelectUser()}
           >
-            Select System User
+            {t("postsMain.select_user_btn")}
           </button>
           <button
             type="button"
@@ -58,7 +60,7 @@ class PostsMain extends Component {
             disabled={!currentSystemUser._id}
             onClick={() => openCreatePostModal()}
           >
-            Create New Post
+            {t("postsMain.create_post_btn")}
           </button>
         </div>
         {!postsList.length ? (
@@ -124,6 +126,9 @@ PostsMain.propTypes = {
   openSelectUser: PropTypes.func.isRequired,
   openCreatePostModal: PropTypes.func.isRequired,
   currentSystemUser: PropTypes.shape({}).isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsMain);
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(PostsMain)
+);

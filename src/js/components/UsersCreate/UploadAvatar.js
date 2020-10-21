@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { withTranslation } from "react-i18next";
 
 import "./UploadAvatar.scss";
 
 const UploadAvatar = (props) => {
-  const { setUserAvatar } = props;
+  const { setUserAvatar, t } = props;
   const uploadRef = useRef(null);
 
   const handleAvatarSelected = async (avatarImage) => {
@@ -35,7 +36,7 @@ const UploadAvatar = (props) => {
       />
       <div className="uploadBtn">
         <button type="button" onClick={() => uploadRef.current.click()}>
-          Selcet a File
+          {t("uploadAvatar.upload_btn")}
         </button>
       </div>
     </div>
@@ -44,5 +45,6 @@ const UploadAvatar = (props) => {
 
 UploadAvatar.propTypes = {
   setUserAvatar: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
-export default UploadAvatar;
+export default withTranslation()(UploadAvatar);
