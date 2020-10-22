@@ -35,9 +35,9 @@ const EditUserModal = (props) => {
   const [userImg, setUserImg] = useState(userData.img);
   const [userName, setUserName] = useState(userData.name);
   const [userAge, setUserAge] = useState(userData.age);
-  const [userBirtDay, setUserBirtDay] = useState(userData.birtDay);
   const [userEmail, setUserEmail] = useState(userData.email);
   const [userWork, setUserWork] = useState(userData.work);
+  const [errorsArray, setErrorsArray] = useState([]);
 
   const handelFormSubmit = (event) => {
     event.preventDefault();
@@ -46,10 +46,29 @@ const EditUserModal = (props) => {
       userImg,
       userName,
       userAge,
-      userBirtDay,
+      userBirtDay: userData.birtDay,
       userEmail,
       userWork,
     };
+
+    const fieldsArray = [
+      { fieldName: "userName", value: userName },
+      { fieldName: "userEmail", value: userEmail },
+      { fieldName: "userWork", value: userWork },
+      { fieldName: "userAge", value: userAge },
+    ];
+
+    const errorsArrayCopy = [];
+    fieldsArray.forEach((item) => {
+      if (item.value === "") {
+        errorsArrayCopy.push(item.fieldName);
+      }
+    });
+
+    if (errorsArrayCopy.length) {
+      setErrorsArray([...errorsArrayCopy]);
+      return;
+    }
 
     dispatch(actions.updateUserDateAction(userUpdatedData));
     dispatch(actions.openEditUserAction());
@@ -83,6 +102,9 @@ const EditUserModal = (props) => {
                   value={userName}
                   onChange={(event) => setUserName(event.target.value)}
                 />
+                <h3 className={errorsArray.includes("userName") && "error"}>
+                  {t("inputError.input_error")}
+                </h3>
               </div>
               <div className="formItem">
                 <p>{t("userEditModal.email_lable")}</p>
@@ -92,6 +114,9 @@ const EditUserModal = (props) => {
                   value={userEmail}
                   onChange={(event) => setUserEmail(event.target.value)}
                 />
+                <h3 className={errorsArray.includes("userEmail") && "error"}>
+                  {t("inputError.input_error")}
+                </h3>
               </div>
               <div className="formItem">
                 <p>{t("userEditModal.work_lable")}</p>
@@ -101,16 +126,10 @@ const EditUserModal = (props) => {
                   value={userWork}
                   onChange={(event) => setUserWork(event.target.value)}
                 />
+                <h3 className={errorsArray.includes("userWork") && "error"}>
+                  {t("inputError.input_error")}
+                </h3>
               </div>
-              {/* <div className="formItem">
-                <p>BirtDay</p>
-                <input
-                  type="text"
-                  name="userBirtDay"
-                  value={userBirtDay}
-                  onChange={(event) => setUserBirtDay(event.target.value)}
-                />
-              </div> */}
               <div className="formItem">
                 <p>{t("userEditModal.age_lable")}</p>
                 <input
@@ -119,6 +138,9 @@ const EditUserModal = (props) => {
                   value={userAge}
                   onChange={(event) => setUserAge(event.target.value)}
                 />
+                <h3 className={errorsArray.includes("userAge") && "error"}>
+                  {t("inputError.input_error")}
+                </h3>
               </div>
             </form>
           </div>

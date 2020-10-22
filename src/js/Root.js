@@ -1,8 +1,12 @@
 import React from "react";
-import { withRouter, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Header from "./containers/Header/Header";
+import EditUserModal from "./components/UsersMain/EditUserModal/EditUserModal";
+import MovieDetails from "./components/MoviesMain/MovieDetails/MovieDetails";
+import SelecteUserModal from "./components/PostsMain/SelecteUserModal/SelecteUserModal";
+import CreatePostModal from "./components/PostsMain/CreatePostModal/CreatePostModal";
 
 import "./Root.scss";
 
@@ -15,27 +19,14 @@ const UsersCreate = React.lazy(() =>
 );
 const HomeMain = React.lazy(() => import("./containers/HomeMain/HomeMain"));
 const SideMenu = React.lazy(() => import("./containers/SideMenu/SideMenu"));
-const EditUserModal = React.lazy(() =>
-  import("./components/UsersMain/EditUserModal/EditUserModal")
-);
-const MovieDetails = React.lazy(() =>
-  import("./components/MoviesMain/MovieDetails/MovieDetails")
-);
 const PostsMain = React.lazy(() => import("./containers/PostsMain/PostsMain"));
-const SelecteUserModal = React.lazy(() =>
-  import("./components/PostsMain/SelecteUserModal/SelecteUserModal")
-);
-
-const CreatePostModal = React.lazy(() =>
-  import("./components/PostsMain/CreatePostModal/CreatePostModal")
-);
 
 const root = (props) => {
   const {
     isEditUserVisible,
     isMovieDetailsVisible,
     isSelectUserVisible,
-    isCreatePostVisible
+    isCreatePostVisible,
   } = props;
 
   return (

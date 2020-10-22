@@ -69,6 +69,8 @@
 
         form {
           .formItem {
+            margin-bottom: 30px;
+            position: relative;
             p {
               margin: 0 10px 5px;
               font-size: 14px;
@@ -76,12 +78,24 @@
               font-weight: 600;
             }
 
+            h3 {
+              margin: 5px 10px;
+              position: absolute;
+              font-size: 12px;
+              color: $dangeros;
+              transition: all 0.2s ease-in-out;
+              opacity: 0;
+
+              &.error {
+                opacity: 1;
+              }
+            }
+
             input {
               border: solid 1px $gradientL2;
               border-radius: 8px;
               width: 100%;
               padding: 4px 8px;
-              margin-bottom: 20px;
               line-height: 20px;
               color: $gradientD5;
               transition: all 0.1s ease-in-out;

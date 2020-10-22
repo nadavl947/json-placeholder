@@ -1,4 +1,7 @@
 {
+  "inputError": {
+    "input_error": "נא למלא שדה חובה"
+  },
   "sideMenu": {
     "home_tab": "ראשי",
     "users_tab": "משתמשים",

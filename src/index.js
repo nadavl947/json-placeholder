@@ -7,14 +7,14 @@ import thunk from "redux-thunk";
 
 import reducers from "./js/store/reducers/reducers";
 import Root from "./js/Root";
-import i18n from './i18n';
+import i18n from "./i18n";
 
 import "./css/styles.scss";
 
-i18n.on('languageChanged', lng => {
-	const body = document.getElementsByTagName('body')[0];
-	if (lng === 'he') body.setAttribute('dir', 'rtl');
-	else body.setAttribute('dir', 'ltr');
+i18n.on("languageChanged", (lng) => {
+  const body = document.getElementsByTagName("body")[0];
+  if (lng === "he") body.setAttribute("dir", "rtl");
+  else body.setAttribute("dir", "ltr");
 });
 
 const rootReducer = combineReducers(reducers);
@@ -25,7 +25,11 @@ const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Suspense
-        fallback={<div style={{ textAlign: "center", margin: "70px auto" }} />}
+        fallback={
+          <div>
+            <div style={{ backgroundColor: "#0f314a", height: "65px" }} />
+          </div>
+        }
       >
         <Root />
       </Suspense>

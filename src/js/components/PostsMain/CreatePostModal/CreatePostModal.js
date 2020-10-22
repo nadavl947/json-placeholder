@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../store/actions/actions";
 import { withTranslation } from "react-i18next";
 import moment from "moment";
+import cn from "classnames";
 
 import "./CreatePostModal.scss";
 
@@ -86,8 +87,12 @@ const CreatePostModal = (props) => {
             </button>
             <button
               type="button"
-              className="createBtn"
+              className={cn(
+                "createBtn",
+                !postText || !postTitle ? "disabledBtn" : null
+              )}
               onClick={() => onCreatePostSubmit()}
+              disabled={!postText || !postTitle}
             >
               {t("createPostModal.create_btn")}
             </button>

@@ -129,6 +129,10 @@
           &:active {
             background-color: $primaryD3;
           }
+          &.disabledBtn {
+            background-color: $gradientD1 !important;
+            transition: all 0.3s ease-in-out;
+          }
         }
       }
     }

@@ -18,6 +18,7 @@ class UsersCreate extends Component {
     userAge: "",
     isFormSubmited: false,
     uploadAvatarType: "webUrl",
+    errorsArray: [],
   };
 
   onResetFields = () => {
@@ -27,6 +28,7 @@ class UsersCreate extends Component {
       userEmail: "",
       userWork: "",
       userAge: "",
+      errorsArray: [],
     });
   };
 
@@ -40,6 +42,28 @@ class UsersCreate extends Component {
       userAge,
       isFormSubmited,
     } = this.state;
+
+    const fieldsArray = [
+      { fieldName: "userName", value: userName },
+      { fieldName: "userEmail", value: userEmail },
+      { fieldName: "userWork", value: userWork },
+      { fieldName: "userAge", value: userAge },
+    ];
+
+    const errorsArrayCopy = [];
+    fieldsArray.forEach((item) => {
+      if (item.value === "") {
+        errorsArrayCopy.push(item.fieldName);
+      }
+    });
+
+    if (errorsArrayCopy.length) {
+      this.setState({
+        errorsArray: [...errorsArrayCopy],
+      });
+      return;
+    }
+
     createNewUser({ avatarUrl, userName, userEmail, userWork, userAge });
     this.setState({ isFormSubmited: !isFormSubmited });
   };
@@ -53,6 +77,7 @@ class UsersCreate extends Component {
       userAge,
       isFormSubmited,
       uploadAvatarType,
+      errorsArray,
     } = this.state;
 
     const { t } = this.props;
@@ -154,6 +179,9 @@ class UsersCreate extends Component {
                         this.setState({ userName: e.target.value })
                       }
                     />
+                    <h3 className={errorsArray.includes("userName") && "error"}>
+                      {t("inputError.input_error")}
+                    </h3>
                   </div>
                   <div className="inputItem">
                     <p>{t("createUserMain.email_lable")}</p>
@@ -164,6 +192,11 @@ class UsersCreate extends Component {
                         this.setState({ userEmail: e.target.value })
                       }
                     />
+                    <h3
+                      className={errorsArray.includes("userEmail") && "error"}
+                    >
+                      {t("inputError.input_error")}
+                    </h3>
                   </div>
                   <div className="inputItem">
                     <p>{t("createUserMain.work_lable")}</p>
@@ -174,6 +207,9 @@ class UsersCreate extends Component {
                         this.setState({ userWork: e.target.value })
                       }
                     />
+                    <h3 className={errorsArray.includes("userWork") && "error"}>
+                      {t("inputError.input_error")}
+                    </h3>
                   </div>
                   <div className="inputItem">
                     <p>{t("createUserMain.age_lable")}</p>
@@ -184,6 +220,9 @@ class UsersCreate extends Component {
                         this.setState({ userAge: e.target.value })
                       }
                     />
+                    <h3 className={errorsArray.includes("userAge") && "error"}>
+                      {t("inputError.input_error")}
+                    </h3>
                   </div>
                   <div className="bottomBtns">
                     <button

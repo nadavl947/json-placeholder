@@ -11,16 +11,18 @@ const UploadAvatar = (props) => {
 
   const handleAvatarSelected = async (avatarImage) => {
     let formData = new FormData();
-    formData.append("avatarImage", avatarImage);
+    formData.append("image", avatarImage);
 
     try {
       const response = await axios({
         method: "POST",
-        url: "http://localhost:4000/upload",
+        url: "https://blog-mongo-nadav.herokuapp.com/upload",
         body: formData,
         data: formData,
         headers: { "Content-Type": "multipart/form-data; " },
       });
+      const { data = {} } = response;
+      setUserAvatar(data.imageUrl);
     } catch (error) {
       console.log(error);
     }

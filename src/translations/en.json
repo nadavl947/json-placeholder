@@ -1,4 +1,7 @@
 {
+  "inputError": {
+    "input_error": "This field is required"
+  },
   "sideMenu": {
     "home_tab": "Home",
     "users_tab": "Users JSON",
