@@ -4,6 +4,7 @@ const initialState = {
   moviesList: [],
   numberOfPagination: null,
   selectedMovieDetails: {},
+  moviesLength: null,
 };
 
 const setMoviesListState = (state, action) => {
@@ -13,6 +14,15 @@ const setMoviesListState = (state, action) => {
     ...state,
     moviesList: data,
     numberOfPagination: 1,
+  };
+};
+
+const setMoviesLengthState = (state, action) => {
+  const { data } = action;
+
+  return {
+    ...state,
+    moviesLength: +data.count,
   };
 };
 
@@ -46,6 +56,8 @@ const moviesReducer = (state = initialState, action) => {
       return setMoreMovieState(state, action);
     case actionsTypes.SET_MOVIE_DETAILS:
       return setMovieDetailsState(state, action);
+    case actionsTypes.SET_MOVIES_LENGTH:
+      return setMoviesLengthState(state, action);
     default:
       return state;
   }

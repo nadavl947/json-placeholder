@@ -14,40 +14,58 @@ const SideMenu = (props) => {
     <div className="sideMenu">
       <div className={cn("menuContent", isSideMenuOpen && "menuOpen")}>
         <div className="topLinks">
+          <div className="sectionTitle">
+            <h3>{t("sideMenu.data_title")}</h3>
+          </div>
           <NavLink to="/">
-            <div className="linkItem">
+            <div className={cn("linkItem", "generalLinkItem")}>
               <i className="fa fa-home" />
               <h3>{t("sideMenu.home_tab")}</h3>
             </div>
           </NavLink>
-
           <NavLink to="/UsersMain">
-            <div className="linkItem">
+            <div className={cn("linkItem", "generalLinkItem")}>
               <i className="fa fa-users" />
               <h3>{t("sideMenu.users_tab")}</h3>
             </div>
           </NavLink>
-
           <NavLink to="/MoviesMain">
-            <div className="linkItem">
+            <div className={cn("linkItem", "generalLinkItem")}>
               <i className="fa fa-film" />
               <h3>{t("sideMenu.movies_tab")}</h3>
             </div>
           </NavLink>
           <NavLink to="/PostsMain">
-            <div className="linkItem">
+            <div className={cn("linkItem", "generalLinkItem")}>
               <i className="fa fa-comments" />
               <h3>{t("sideMenu.posts_tab")}</h3>
             </div>
           </NavLink>
         </div>
         <div className="bottomLinks">
+          <div className="sectionTitle">
+            <h3>{t("sideMenu.create_title")}</h3>
+          </div>
           <NavLink to="/UsersCreate">
-            <div className="linkItemBottom">
+            <div className={cn("linkItemBottom", "generalLinkItem")}>
               <i className="fa fa-users" />
               <h3>{t("sideMenu.create_user_tab")}</h3>
             </div>
           </NavLink>
+        </div>
+        <div className="adminLinks">
+          <div className="sectionTitle">
+            <h3>Admin Section</h3>
+          </div>
+          <div className="logOuBtn">
+            <button
+              type="button"
+              onClick={() => {}}
+            >
+              <i className="fa fa-eject" />
+              <h3>{t("sideMenu.logout")}</h3>
+            </button>
+          </div>
         </div>
       </div>
       <div

@@ -10,6 +10,7 @@ export {
   getAllMoviesAction,
   loadMoreMoviesActions,
   getMovieDetailsAction,
+  getMoviesLength,
 } from "./moviesActions";
 
 export {

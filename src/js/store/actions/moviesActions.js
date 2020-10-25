@@ -11,8 +11,15 @@ const LoadMoreMoviesCallback = (data) => ({
   data,
 });
 
-const setMovieDetailsCallBack = (id) => ({ type: actionsTypes.SET_MOVIE_DETAILS, id });
+const setMovieDetailsCallBack = (id) => ({
+  type: actionsTypes.SET_MOVIE_DETAILS,
+  id,
+});
 
+const setMoviesLengthCallback = (data) => ({
+  type: actionsTypes.SET_MOVIES_LENGTH,
+  data,
+});
 
 export const getAllMoviesAction = () => async (dispatch) => {
   try {
@@ -26,7 +33,21 @@ export const getAllMoviesAction = () => async (dispatch) => {
   }
 };
 
-export const loadMoreMoviesActions = (numberOfPagination) => async (dispatch) => {
+export const getMoviesLength = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://blog-mongo-nadav.herokuapp.com/movies/moviesLength`
+    );
+    const { data = {} } = response;
+    dispatch(setMoviesLengthCallback(data));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const loadMoreMoviesActions = (numberOfPagination) => async (
+  dispatch
+) => {
   try {
     const response = await axios.get(
       `https://blog-mongo-nadav.herokuapp.com/movies/${numberOfPagination}`
@@ -39,5 +60,5 @@ export const loadMoreMoviesActions = (numberOfPagination) => async (dispatch) =>
 };
 
 export const getMovieDetailsAction = (id) => (dispatch) => {
-    dispatch(setMovieDetailsCallBack(id));
-  };
+  dispatch(setMovieDetailsCallBack(id));
+};

@@ -13,40 +13,25 @@
     padding: 0px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
-    .linkItem {
-      margin-bottom: 10px;
-      border-radius: 12px;
-      background-color: $primary;
-      box-shadow: $box-shadow4;
-      color: $gradientL5;
-      height: 30px;
-      display: flex;
-      padding: 0 10px;
-      align-items: center;
+    .sectionTitle {
+      margin-bottom: 15px;
       transition: all 0.3s ease-in-out;
       opacity: 0;
 
-      &:hover {
-        background-color: $primaryD2;
-      }
-      &:active {
-        background-color: $primaryD3;
-      }
-
       h3 {
+        font-size: 16px;
+        color: $gradientD2;
+        border-bottom: 2px solid $gradientL2;
+        text-align: center;
         white-space: nowrap;
         overflow: hidden;
-        font-weight: 600;
-        margin: 0 10px;
       }
     }
 
-    .linkItemBottom {
+    .generalLinkItem {
       margin-bottom: 10px;
       border-radius: 12px;
-      background-color: $secondary;
       box-shadow: $box-shadow4;
       color: $gradientL5;
       height: 30px;
@@ -56,18 +41,76 @@
       transition: all 0.3s ease-in-out;
       opacity: 0;
 
-      &:hover {
-        background-color: $secondaryD2;
-      }
-      &:active {
-        background-color: $secondaryD3;
-      }
-
-      h3 {
+      > h3 {
         white-space: nowrap;
         overflow: hidden;
         font-weight: 600;
         margin: 0 10px;
+        color: $gradientL5 !important;
+      }
+    }
+
+    .topLinks {
+      flex: 1;
+      .linkItem {
+        background-color: $primary;
+
+        &:hover {
+          background-color: $primaryD2;
+        }
+        &:active {
+          background-color: $primaryD3;
+        }
+      }
+    }
+
+    .bottomLinks {
+      flex: 1;
+
+      .linkItemBottom {
+        background-color: $secondary;
+
+        &:hover {
+          background-color: $secondaryD2;
+        }
+        &:active {
+          background-color: $secondaryD3;
+        }
+      }
+    }
+
+    .adminLinks {
+      flex: 1;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+
+      button {
+        margin-bottom: 10px;
+        border-radius: 12px;
+        background-color: $dangeros;
+        box-shadow: $box-shadow4;
+        color: $gradientL5;
+        height: 30px;
+        display: flex;
+        padding: 0 10px;
+        align-items: center;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+
+        > h3 {
+          white-space: nowrap;
+          overflow: hidden;
+          font-weight: 600;
+          margin: 0 10px;
+          color: $gradientL5 !important;
+        }
+
+        &:hover {
+          background-color: $dangerosD1;
+        }
+        &:active {
+          background-color: $dangerosD2;
+        }
       }
     }
 
@@ -76,7 +119,9 @@
       width: 200px;
       padding: 20px;
       .linkItem,
-      .linkItemBottom {
+      .linkItemBottom,
+      .sectionTitle,
+      .adminLinks {
         opacity: 1;
       }
     }

@@ -7,7 +7,10 @@
     "users_tab": "משתמשים",
     "movies_tab": "סרטים",
     "posts_tab": "פוסטים",
-    "create_user_tab": "יצירת משתמש"
+    "create_user_tab": "יצירת משתמש",
+    "data_title": "דטאות",
+    "create_title": "יצירה",
+    "logout": "התנתק"
   },
   "homeMain": {
     "get": "Get",

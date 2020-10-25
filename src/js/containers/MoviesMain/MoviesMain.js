@@ -12,12 +12,19 @@ class MoviesMain extends Component {
   state = {};
 
   componentDidMount() {
-    const { getAllMovies } = this.props;
+    const { getAllMovies, getMoviesLength } = this.props;
     getAllMovies();
+    getMoviesLength();
   }
 
   render() {
-    const { moviesList, numberOfPagination, loadMoeMovies, t } = this.props;
+    const {
+      moviesList,
+      numberOfPagination,
+      loadMoeMovies,
+      t,
+      moviesLength,
+    } = this.props;
 
     return (
       <div className="moviesMain">
@@ -32,14 +39,16 @@ class MoviesMain extends Component {
             })}
           </div>
         )}
-        <div className="loadMoreBtn">
-          <button
-            type="button"
-            onClick={() => loadMoeMovies(numberOfPagination + 1)}
-          >
-            {t("moviesMain.more")}
-          </button>
-        </div>
+        {moviesLength - moviesList.length !== 0 && (
+          <div className="loadMoreBtn">
+            <button
+              type="button"
+              onClick={() => loadMoeMovies(numberOfPagination + 1)}
+            >
+              {t("moviesMain.more")}
+            </button>
+          </div>
+        )}
       </div>
     );
   }
@@ -49,12 +58,14 @@ const mapStateToProps = (state) => {
   return {
     moviesList: state.moviesReducer.moviesList,
     numberOfPagination: state.moviesReducer.numberOfPagination,
+    moviesLength: state.moviesReducer.moviesLength,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllMovies: () => dispatch(actions.getAllMoviesAction()),
+    getMoviesLength: () => dispatch(actions.getMoviesLength()),
     loadMoeMovies: (numberOfPagination) =>
       dispatch(actions.loadMoreMoviesActions(numberOfPagination)),
   };
@@ -64,6 +75,7 @@ MoviesMain.propTypes = {
   getAllMovies: PropTypes.func.isRequired,
   loadMoeMovies: PropTypes.func.isRequired,
   numberOfPagination: PropTypes.number,
+  moviesLength: PropTypes.number,
 };
 
 MoviesMain.defaultProps = {

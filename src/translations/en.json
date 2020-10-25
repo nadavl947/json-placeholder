@@ -7,7 +7,10 @@
     "users_tab": "Users JSON",
     "movies_tab": "Movies JSON",
     "posts_tab": "Posts JSON",
-    "create_user_tab": "Create Users"
+    "create_user_tab": "Create Users",
+    "data_title": "Data Placeholders",
+    "create_title": "Creating Data",
+    "logout": "LogOut"
   },
   "homeMain": {
     "get": "Get",
