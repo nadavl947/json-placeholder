@@ -27,3 +27,5 @@ export {
   createNewPostAction,
   deletePostAction,
 } from "./postsActions";
+
+export { adminLogInAction, checkIfUserLogged, logOut } from "./adminActions";

@@ -1,0 +1,323 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url(/../fonts/Dueto/icomoon.eot?yo54yy);
+  src:  url(/../fonts/Dueto/icomoon.eot?yo54yy#iefix) format('embedded-opentype'),
+    url(/../fonts/Dueto/icomoon.ttf?yo54yy) format('truetype'),
+    url(/../fonts/Dueto/icomoon.woff?yo54yy) format('woff'),
+    url(/../fonts/Dueto/icomoon.svg?yo54yy#icomoon) format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Message_noticfication .path1:before {
+  content: "\e900";
+  color: rgb(0, 8, 28);
+}
+.icon-Message_noticfication .path2:before {
+  content: "\e901";
+  margin-left: -1em;
+  color: rgb(255, 73, 76);
+}
+.icon-X_Circle:before {
+  content: "\e902";
+}
+.icon-Confidential:before {
+  content: "\e903";
+}
+.icon-Whatsapp_Solid:before {
+  content: "\e904";
+}
+.icon-User_Plus:before {
+  content: "\e905";
+}
+.icon-Interview:before {
+  content: "\e906";
+}
+.icon-User:before {
+  content: "\e907";
+}
+.icon-Users:before {
+  content: "\e908";
+}
+.icon-Upload:before {
+  content: "\e909";
+}
+.icon-Upload_Cloud:before {
+  content: "\e90a";
+}
+.icon-Dislike2:before {
+  content: "\e90b";
+}
+.icon-Dislike:before {
+  content: "\e90c";
+}
+.icon-Like2:before {
+  content: "\e90d";
+}
+.icon-Like:before {
+  content: "\e90e";
+}
+.icon-Star_Stroke:before {
+  content: "\e90f";
+}
+.icon-Star_Solid:before {
+  content: "\e910";
+}
+.icon-Phone_Stroke:before {
+  content: "\e911";
+}
+.icon-Phone_Solid:before {
+  content: "\e912";
+}
+.icon-m .path1:before {
+  content: "\e913";
+  color: rgb(255, 73, 76);
+}
+.icon-m .path2:before {
+  content: "\e914";
+  margin-left: -1em;
+  color: rgb(0, 8, 28);
+}
+.icon-m .path3:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: rgb(255, 73, 76);
+}
+.icon-Chat2:before {
+  content: "\e916";
+}
+.icon-Chat:before {
+  content: "\e917";
+}
+.icon-Message_Stroke:before {
+  content: "\e918";
+}
+.icon-Kebab_Horizontal:before {
+  content: "\e919";
+}
+.icon-Kebab_Vertical:before {
+  content: "\e91a";
+}
+.icon-Instructions:before {
+  content: "\e91b";
+}
+.icon-Hourglass_Triangle:before {
+  content: "\e91c";
+}
+.icon-Circle1:before {
+  content: "\e91d";
+}
+.icon-exclamation:before {
+  content: "\e91e";
+}
+.icon-Sad_Solid:before {
+  content: "\e91f";
+}
+.icon-Happy_Stroke:before {
+  content: "\e920";
+}
+.icon-Happy_solid:before {
+  content: "\e921";
+}
+.icon-email_Stroke:before {
+  content: "\e922";
+}
+.icon-Email_flying:before {
+  content: "\e923";
+}
+.icon-Email_no:before {
+  content: "\e924";
+}
+.icon-Email_Solid:before {
+  content: "\e925";
+}
+.icon-ChevronD:before {
+  content: "\e926";
+}
+.icon-ChevronL:before {
+  content: "\e927";
+}
+.icon-ChevronR:before {
+  content: "\e928";
+}
+.icon-ChevronU:before {
+  content: "\e929";
+}
+.icon-Check_circle:before {
+  content: "\e92a";
+}
+.icon-Check_regular:before {
+  content: "\e92b";
+}
+.icon-Bell_check:before {
+  content: "\e92c";
+}
+.icon-Bell:before {
+  content: "\e92d";
+}
+.icon-Bell_notification .path1:before {
+  content: "\e92e";
+  color: rgb(0, 8, 28);
+}
+.icon-Bell_notification .path2:before {
+  content: "\e92f";
+  margin-left: -1em;
+  color: rgb(255, 73, 76);
+}
+.icon-Alert:before {
+  content: "\e930";
+}
+.icon-Arrow_Right:before {
+  content: "\e931";
+}
+.icon-Attach:before {
+  content: "\e932";
+}
+.icon-Bot:before {
+  content: "\e933";
+}
+.icon-Bye:before {
+  content: "\e934";
+}
+.icon-Calendar:before {
+  content: "\e935";
+}
+.icon-Clock:before {
+  content: "\e936";
+}
+.icon-Confetti:before {
+  content: "\e937";
+}
+.icon-Confidential1:before {
+  content: "\e938";
+}
+.icon-Copy:before {
+  content: "\e939";
+}
+.icon-Dollar:before {
+  content: "\e93a";
+}
+.icon-Download:before {
+  content: "\e93b";
+}
+.icon-Drag:before {
+  content: "\e93c";
+}
+.icon-Edit:before {
+  content: "\e93d";
+}
+.icon-Reveal:before {
+  content: "\e93e";
+}
+.icon-Facebook:before {
+  content: "\e93f";
+}
+.icon-Filter:before {
+  content: "\e940";
+}
+.icon-Form_Sheet:before {
+  content: "\e941";
+}
+.icon-Globe:before {
+  content: "\e942";
+}
+.icon-Hamburger:before {
+  content: "\e943";
+}
+.icon-Hourglass:before {
+  content: "\e944";
+}
+.icon-Info:before {
+  content: "\e945";
+}
+.icon-Linkedin:before {
+  content: "\e946";
+}
+.icon-Lock:before {
+  content: "\e947";
+}
+.icon-login:before {
+  content: "\e948";
+}
+.icon-Maximize:before {
+  content: "\e949";
+}
+.icon-Next_Step:before {
+  content: "\e94a";
+}
+.icon-plus_Square:before {
+  content: "\e94b";
+}
+.icon-Plus:before {
+  content: "\e94c";
+}
+.icon-Pushpin:before {
+  content: "\e94d";
+}
+.icon-questionmark:before {
+  content: "\e94e";
+}
+.icon-Refresh:before {
+  content: "\e94f";
+}
+.icon-Search:before {
+  content: "\e950";
+}
+.icon-Send:before {
+  content: "\e951";
+}
+.icon-Settings:before {
+  content: "\e952";
+}
+.icon-Skip:before {
+  content: "\e953";
+}
+.icon-SMS:before {
+  content: "\e954";
+}
+.icon-Star_badge:before {
+  content: "\e955";
+}
+.icon-Stickder:before {
+  content: "\e956";
+}
+.icon-Stop:before {
+  content: "\e957";
+}
+.icon-Tooltip:before {
+  content: "\e958";
+}
+.icon-trash:before {
+  content: "\e959";
+}
+.icon-Under_Contract:before {
+  content: "\e95a";
+}
+.icon-User_Sheet:before {
+  content: "\e95b";
+}
+.icon-Whatsapp:before {
+  content: "\e95c";
+}
+.icon-Write_Review:before {
+  content: "\e95d";
+}
+.icon-X:before {
+  content: "\e95e";
+}

@@ -1,6 +1,7 @@
-import React from "react";
-import { Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import * as actions from "./store/actions/actions";
 
 import Header from "./containers/Header/Header";
 import EditUserModal from "./components/UsersMain/EditUserModal/EditUserModal";
@@ -20,14 +21,27 @@ const UsersCreate = React.lazy(() =>
 const HomeMain = React.lazy(() => import("./containers/HomeMain/HomeMain"));
 const SideMenu = React.lazy(() => import("./containers/SideMenu/SideMenu"));
 const PostsMain = React.lazy(() => import("./containers/PostsMain/PostsMain"));
+const LogInMain = React.lazy(() => import("./containers/LogInMain/LogInMain"));
 
-const root = (props) => {
+const Root = (props) => {
   const {
     isEditUserVisible,
     isMovieDetailsVisible,
     isSelectUserVisible,
     isCreatePostVisible,
+    isAdminLoggedIn,
+    checkIfAdminLogged,
+    history,
   } = props;
+
+  useEffect(() => {
+    checkIfAdminLogged();
+    if (!isAdminLoggedIn) {
+      history.push("/login");
+    } else {
+      history.push("/");
+    }
+  }, [isAdminLoggedIn, checkIfAdminLogged, history]);
 
   return (
     <div>
@@ -38,20 +52,34 @@ const root = (props) => {
       <Header />
       <div className="body">
         <div className="switchContainer">
-          <SideMenu />
-          <div className="mainSwitch">
+          {isAdminLoggedIn ? (
+            <>
+              <SideMenu />
+              <div className="mainSwitch">
+                <Switch>
+                  <HomeMain exact path="/" />
+                  <UsersMain exact path="/UsersMain" />
+                  <MoviesMain exact path="/MoviesMain" />
+                  <UsersCreate exact path="/UsersCreate" />
+                  <PostsMain exact path="/PostsMain" />
+                </Switch>
+              </div>
+            </>
+          ) : (
             <Switch>
-              <HomeMain exact path="/" />
-              <UsersMain exact path="/UsersMain" />
-              <MoviesMain exact path="/MoviesMain" />
-              <UsersCreate exact path="/UsersCreate" />
-              <PostsMain exact path="/PostsMain" />
+              <LogInMain exact path="/login" />
             </Switch>
-          </div>
+          )}
         </div>
       </div>
     </div>
   );
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkIfAdminLogged: () => dispatch(actions.checkIfUserLogged()),
+  };
 };
 
 const mapStateToProps = (state) => ({
@@ -59,6 +87,7 @@ const mapStateToProps = (state) => ({
   isMovieDetailsVisible: state.mainReducer.isMovieDetailsModalVisible,
   isSelectUserVisible: state.mainReducer.isSelectUserVisible,
   isCreatePostVisible: state.mainReducer.isCreatePostVisible,
+  isAdminLoggedIn: state.adminReducer.isAdminLogged,
 });
 
-export default connect(mapStateToProps, null)(root);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Root));

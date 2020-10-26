@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { withTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from "../../store/actions/actions";
 
 import cn from "classnames";
 
@@ -8,7 +10,12 @@ import "./SideMenu.scss";
 
 const SideMenu = (props) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
-  const { t } = props;
+  const adminConnected = useSelector(
+    (state) => state.adminReducer.adminConnected
+  );
+  const { t, history } = props;
+
+  const dispatch = useDispatch();
 
   return (
     <div className="sideMenu">
@@ -60,7 +67,11 @@ const SideMenu = (props) => {
           <div className="logOuBtn">
             <button
               type="button"
-              onClick={() => {}}
+              onClick={() =>
+                dispatch(
+                  actions.logOut(adminConnected._id, history.push("/login"))
+                )
+              }
             >
               <i className="fa fa-eject" />
               <h3>{t("sideMenu.logout")}</h3>
@@ -87,4 +98,4 @@ const SideMenu = (props) => {
   );
 };
 
-export default withTranslation()(SideMenu);
+export default withRouter(withTranslation()(SideMenu));
