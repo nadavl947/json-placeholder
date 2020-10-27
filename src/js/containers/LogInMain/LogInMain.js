@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import * as actions from "../../store/actions/actions";
+import { withTranslation } from "react-i18next";
 
 import "./LogInMain.scss";
 
@@ -12,7 +13,7 @@ class LogInMain extends Component {
   };
 
   render() {
-    const { logIn, history } = this.props;
+    const { logIn, history, t } = this.props;
     const { email, password } = this.state;
 
     return (
@@ -20,7 +21,7 @@ class LogInMain extends Component {
         <div className="loginContent">
           <div className="formSection">
             <div className="inputItem">
-              <p>Email</p>
+              <p>{t("logIn.email")}</p>
               <input
                 type="text"
                 name="email"
@@ -29,7 +30,7 @@ class LogInMain extends Component {
               />
             </div>
             <div className="inputItem">
-              <p>Password</p>
+              <p>{t("logIn.password")}</p>
               <input
                 type="password"
                 name="password"
@@ -43,7 +44,7 @@ class LogInMain extends Component {
                 onClick={() => logIn(email, password, history.push("/"))}
                 className="submitBtn"
               >
-                Continue
+                {t("logIn.continue")}
               </button>
             </div>
           </div>
@@ -63,4 +64,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(LogInMain));
+export default withTranslation()(
+  withRouter(connect(null, mapDispatchToProps)(LogInMain))
+);

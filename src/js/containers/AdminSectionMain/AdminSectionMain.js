@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
 
 import LinksFolderItem from "../../components/AdminSectionMain/LinksFolderItem/LinksFolderItem";
 
@@ -16,12 +17,12 @@ class AdminSectionMain extends Component {
   }
 
   render() {
-    const { linksList, openAddFolder } = this.props;
+    const { linksList, openAddFolder, t } = this.props;
     return (
       <div className="adminSection">
         <div className="addFolderBtn">
           <button type="button" onClick={() => openAddFolder()}>
-            Add New Folder
+            {t("adminSection.newFolderBtn")}
           </button>
         </div>
         <div className="foldersList">
@@ -57,4 +58,6 @@ AdminSectionMain.defaultProps = {
   linksList: [],
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminSectionMain);
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(AdminSectionMain)
+);

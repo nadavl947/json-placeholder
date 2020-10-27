@@ -104,5 +104,13 @@
   },
   "uploadAvatar": {
     "upload_btn": "Selcet a File"
+  },
+  "adminSection": {
+    "newFolderBtn": "Create New Folder"
+  },
+  "logIn": {
+    "email": "Email",
+    "password": "Password",
+    "continue": "Continue"
   }
 }

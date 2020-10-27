@@ -105,5 +105,13 @@
   },
   "uploadAvatar": {
     "upload_btn": "בחר תמונה"
+  },
+  "adminSection": {
+    "newFolderBtn": "יצירת תיקייה חדשה"
+  },
+  "logIn": {
+    "email": "אמייל",
+    "password": "סיסמה",
+    "continue": "כניסה"
   }
 }
