@@ -23,8 +23,13 @@ export const SET_CURRENT_USER_DATA = "SET_CURRENT_USER_DATA";
 export const OPEN_SELECT_USER_MODAL = "OPEN_SELECT_USER_MODAL";
 export const ADD_NEW_COMMENT = "ADD_NEW_COMMENT";
 export const OPEN_CREATE_POST_MODAL = "OPEN_CREATE_POST_MODAL";
+export const OPEN_CREATE_FOLDER_MODAL = "OPEN_CREATE_FOLDER_MODAL";
 
 // admin action
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
 export const IS_ADMIN_LOGGED = "IS_ADMIN_LOGGED";
+
+// links actions
+export const GET_ALL_LINKS = "GET_ALL_LINKS";
+export const CREATE_NEW_FODER = "CREATE_NEW_FODER";

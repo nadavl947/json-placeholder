@@ -10,7 +10,8 @@
     "create_user_tab": "Create Users",
     "data_title": "Data Placeholders",
     "create_title": "Creating Data",
-    "logout": "LogOut"
+    "logout": "LogOut",
+    "admin": "Admin Section"
   },
   "homeMain": {
     "get": "Get",

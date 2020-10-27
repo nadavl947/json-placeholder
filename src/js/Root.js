@@ -8,6 +8,7 @@ import EditUserModal from "./components/UsersMain/EditUserModal/EditUserModal";
 import MovieDetails from "./components/MoviesMain/MovieDetails/MovieDetails";
 import SelecteUserModal from "./components/PostsMain/SelecteUserModal/SelecteUserModal";
 import CreatePostModal from "./components/PostsMain/CreatePostModal/CreatePostModal";
+import CreateLinksFolderModal from "./components/AdminSectionMain/CreateLinksFolderModal/CreateLinksFolderModal";
 
 import "./Root.scss";
 
@@ -22,6 +23,9 @@ const HomeMain = React.lazy(() => import("./containers/HomeMain/HomeMain"));
 const SideMenu = React.lazy(() => import("./containers/SideMenu/SideMenu"));
 const PostsMain = React.lazy(() => import("./containers/PostsMain/PostsMain"));
 const LogInMain = React.lazy(() => import("./containers/LogInMain/LogInMain"));
+const AdminSectionMain = React.lazy(() =>
+  import("./containers/AdminSectionMain/AdminSectionMain")
+);
 
 const Root = (props) => {
   const {
@@ -30,16 +34,15 @@ const Root = (props) => {
     isSelectUserVisible,
     isCreatePostVisible,
     isAdminLoggedIn,
+    isCreateLinksFolderVisible,
     checkIfAdminLogged,
     history,
   } = props;
 
   useEffect(() => {
     checkIfAdminLogged();
-    if (!isAdminLoggedIn) {
+    if (isAdminLoggedIn === false) {
       history.push("/login");
-    } else {
-      history.push("/");
     }
   }, [isAdminLoggedIn, checkIfAdminLogged, history]);
 
@@ -49,6 +52,7 @@ const Root = (props) => {
       {isMovieDetailsVisible && <MovieDetails />}
       {isSelectUserVisible && <SelecteUserModal />}
       {isCreatePostVisible && <CreatePostModal />}
+      {isCreateLinksFolderVisible && <CreateLinksFolderModal />}
       <Header />
       <div className="body">
         <div className="switchContainer">
@@ -62,6 +66,7 @@ const Root = (props) => {
                   <MoviesMain exact path="/MoviesMain" />
                   <UsersCreate exact path="/UsersCreate" />
                   <PostsMain exact path="/PostsMain" />
+                  <AdminSectionMain exact path="/AdminSectionMain" />
                 </Switch>
               </div>
             </>
@@ -87,6 +92,7 @@ const mapStateToProps = (state) => ({
   isMovieDetailsVisible: state.mainReducer.isMovieDetailsModalVisible,
   isSelectUserVisible: state.mainReducer.isSelectUserVisible,
   isCreatePostVisible: state.mainReducer.isCreatePostVisible,
+  isCreateLinksFolderVisible: state.mainReducer.isCreateLinksFolderVisible,
   isAdminLoggedIn: state.adminReducer.isAdminLogged,
 });
 

@@ -3,6 +3,7 @@ import moviesReducer from "./moviesReducer";
 import mainReducer from "./mainReducer";
 import postsReducer from "./postsReducer";
 import adminReducer from "./adminReducer";
+import linksReducer from "./linksReducer";
 
 export default {
   usersReducer,
@@ -10,4 +11,5 @@ export default {
   mainReducer,
   postsReducer,
   adminReducer,
+  linksReducer,
 };

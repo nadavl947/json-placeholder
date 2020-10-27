@@ -19,6 +19,7 @@ export {
   selecteCurrentUser,
   openSelectUserModalAction,
   openCreatePostModal,
+  openCreateFolderModalAction,
 } from "./mainActions";
 
 export {
@@ -29,3 +30,8 @@ export {
 } from "./postsActions";
 
 export { adminLogInAction, checkIfUserLogged, logOut } from "./adminActions";
+
+export {
+  getAllLinksFoldersAction,
+  createNewFolderAction,
+} from "./linksActions";

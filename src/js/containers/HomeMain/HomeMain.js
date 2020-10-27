@@ -122,28 +122,28 @@ class HomeMain extends Component {
           <button
             type="button"
             onClick={() => this.setState({ contentType: "about" })}
-            className={contentType === "about" && "activeTab"}
+            className={contentType === "about" ? "activeTab" : null}
           >
             {t("homeMain.about")}
           </button>
           <button
             type="button"
             onClick={() => this.setState({ contentType: "users" })}
-            className={contentType === "users" && "activeTab"}
+            className={contentType === "users" ? "activeTab" : null}
           >
             {t("homeMain.users")}
           </button>
           <button
             type="button"
             onClick={() => this.setState({ contentType: "movies" })}
-            className={contentType === "movies" && "activeTab"}
+            className={contentType === "movies" ? "activeTab" : null}
           >
             {t("homeMain.movies")}
           </button>
           <button
             type="button"
             onClick={() => this.setState({ contentType: "posts" })}
-            className={contentType === "posts" && "activeTab"}
+            className={contentType === "posts" ? "activeTab" : null}
           >
             {t("homeMain.posts")}
           </button>

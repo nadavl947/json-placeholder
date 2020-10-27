@@ -15,7 +15,7 @@ const Header = () => {
         <div className={cn("sliderBack", currentLang === "he" && "right")} />
         <button
           type="button"
-          className={currentLang === "en" && "activeLang"}
+          className={currentLang === "en" ? "activeLang" : null}
           onClick={() => {
             setCurrentLang("en");
             changeLanguage("en");
@@ -25,7 +25,7 @@ const Header = () => {
         </button>
         <button
           type="button"
-          className={currentLang === "he" && "activeLang"}
+          className={currentLang === "he" ? "activeLang" : null}
           onClick={() => {
             setCurrentLang("he");
             changeLanguage("he");

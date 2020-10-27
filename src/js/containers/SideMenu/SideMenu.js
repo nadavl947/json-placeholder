@@ -62,8 +62,14 @@ const SideMenu = (props) => {
         </div>
         <div className="adminLinks">
           <div className="sectionTitle">
-            <h3>Admin Section</h3>
+            <h3>{t("sideMenu.admin")}</h3>
           </div>
+          <NavLink to="/AdminSectionMain">
+            <div className={cn("adminLinks", "generalLinkItem")}>
+              <i className="fa fa-unlock-alt" />
+              <h3>{t("sideMenu.admin")}</h3>
+            </div>
+          </NavLink>
           <div className="logOuBtn">
             <button
               type="button"

@@ -1,0 +1,60 @@
+@import "../../../../css/designSystem.scss";
+
+.folderItem {
+  border-radius: 12px;
+  box-shadow: $box-shadow1;
+  margin-bottom: 15px;
+
+  .folderTitle {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    transition: all 0.1s ease-in-out;
+
+    h3 {
+      color: $gradientL5;
+      flex: 1;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    button {
+      margin: 0 10px;
+      color: $gradientL5;
+    }
+
+    .openTabBtn {
+      i {
+        transform: rotate(180deg);
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    &.openFolder {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      .openTabBtn {
+        i {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+  .folderContent {
+    background-color: $gradientL5;
+    height: 0;
+    overflow-y: scroll;
+    transition: all 0.2s ease-in-out;
+    border-radius: 12px;
+    padding: 0;
+    opacity: 0;
+
+    &.openFolder {
+      padding: 20px;
+      height: 200px;
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}

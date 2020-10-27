@@ -1,0 +1,122 @@
+@import "../../../../css/designSystem.scss";
+
+.createLinksFolderModalContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  animation: uploadAnimation 0.3s ease-in-out 0s 1;
+  backdrop-filter: blur(2px);
+  direction: ltr;
+
+  .modelContent {
+    padding: 20px 30px;
+    width: 450px;
+    background-color: $gradientL5;
+    border-radius: 12px;
+    box-shadow: $box-shadow1;
+    animation: scalAnimations 0.3s ease-in-out 0s 1;
+    overflow: hidden;
+
+    .modalTitle {
+      text-align: center;
+      h3 {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .inputItem {
+      margin-bottom: 20px;
+      position: relative;
+      p {
+        margin: 0 auto 20px;
+        font-size: 14px;
+        color: $gradientD4;
+        border-bottom: 2px solid $gradientL2;
+        padding: 0 15px;
+        width: fit-content;
+      }
+
+      input {
+        border: solid 1px $gradientL2;
+        border-radius: 8px;
+        width: 100%;
+        padding: 4px 8px;
+        line-height: 20px;
+        color: $gradientD5;
+        transition: all 0.1s ease-in-out;
+        font-size: 14px;
+
+        &:hover {
+          box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+        &:focus {
+          box-shadow: 0 0 3px 1px $primary;
+        }
+      }
+
+      .colorsList {
+        display: flex;
+        justify-content: space-around;
+        button {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          box-shadow: $box-shadow2;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    .submitBtn {
+      margin-top: 40px;
+      text-align: center;
+      button {
+        border-radius: 12px;
+        box-shadow: $box-shadow4;
+        color: $gradientL5;
+        height: 30px;
+        padding: 0 20px;
+        background-color: $primary;
+        transition: all 0.3s ease-in-out;
+        font-size: 16px;
+        font-weight: 600;
+
+        &:hover {
+          background-color: $primaryD2;
+        }
+        &:active {
+          background-color: $primaryD3;
+        }
+      }
+    }
+  }
+}
+
+@keyframes uploadAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scalAnimations {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}

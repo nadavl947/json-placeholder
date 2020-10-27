@@ -112,6 +112,17 @@
           background-color: $dangerosD2;
         }
       }
+
+      .adminLinks {
+        background-color: $warning;
+
+        &:hover {
+          background-color: $warningD1;
+        }
+        &:active {
+          background-color: $warningD2;
+        }
+      }
     }
 
     &.menuOpen {

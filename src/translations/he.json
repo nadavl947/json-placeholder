@@ -10,7 +10,9 @@
     "create_user_tab": "יצירת משתמש",
     "data_title": "דטאות",
     "create_title": "יצירה",
-    "logout": "התנתק"
+    "logout": "התנתק",
+    "admin": "עורך"
+
   },
   "homeMain": {
     "get": "Get",

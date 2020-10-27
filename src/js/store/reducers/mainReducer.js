@@ -5,6 +5,7 @@ const initialState = {
   isMovieDetailsModalVisible: false,
   isSelectUserVisible: false,
   isCreatePostVisible: false,
+  isCreateLinksFolderVisible: false,
   currentSystemUser: {},
 };
 
@@ -44,6 +45,15 @@ const handleCreatePostVisible = (state) => {
   };
 };
 
+const handelCreateFolderModalVisible = (state) => {
+  const { isCreateLinksFolderVisible } = state;
+
+  return {
+    ...state,
+    isCreateLinksFolderVisible: !isCreateLinksFolderVisible,
+  };
+};
+
 const setCurrentUserState = (state, action) => {
   const { data } = action;
 
@@ -65,6 +75,8 @@ const mainReducer = (state = initialState, action) => {
       return handleCreatePostVisible(state);
     case actionsTypes.SET_CURRENT_USER_DATA:
       return setCurrentUserState(state, action);
+    case actionsTypes.OPEN_CREATE_FOLDER_MODAL:
+      return handelCreateFolderModalVisible(state);
     default:
       return state;
   }

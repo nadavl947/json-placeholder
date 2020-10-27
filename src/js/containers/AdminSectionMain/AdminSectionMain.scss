@@ -1,0 +1,33 @@
+@import "../../../css/designSystem.scss";
+
+.adminSection {
+  width: 80%;
+  margin: 20px auto;
+  height: calc(100% - 65px);
+  padding: 20px;
+
+  .addFolderBtn {
+    margin-bottom: 20px;
+
+    button {
+      border-radius: 12px;
+      background-color: $secondary;
+      box-shadow: $box-shadow4;
+      color: $gradientL5;
+      height: 30px;
+      display: flex;
+      padding: 0 10px;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      font-weight: 600;
+      font-size: 16px;
+
+      &:hover {
+        background-color: $secondaryD2;
+      }
+      &:active {
+        background-color: $secondaryD3;
+      }
+    }
+  }
+}

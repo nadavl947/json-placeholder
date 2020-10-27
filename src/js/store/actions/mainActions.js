@@ -16,6 +16,10 @@ const openCreatePostCallback = () => ({
   type: actionsTypes.OPEN_CREATE_POST_MODAL,
 });
 
+const openCreateFolderModal = () => ({
+  type: actionsTypes.OPEN_CREATE_FOLDER_MODAL,
+});
+
 const setCurrentUserata = (data) => ({
   type: actionsTypes.SET_CURRENT_USER_DATA,
   data,
@@ -39,4 +43,8 @@ export const openCreatePostModal = () => async (dispatch) => {
 
 export const selecteCurrentUser = (currentUserData) => async (dispatch) => {
   dispatch(setCurrentUserata(currentUserData));
+};
+
+export const openCreateFolderModalAction = () => async (dispatch) => {
+  dispatch(openCreateFolderModal());
 };

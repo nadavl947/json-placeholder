@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionsTypes";
 
 const initialState = {
-  isAdminLogged: false,
+  isAdminLogged: null,
   adminConnected: {},
 };
 
