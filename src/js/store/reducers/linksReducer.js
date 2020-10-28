@@ -28,6 +28,7 @@ const initialState = {
       color: "#0f314a",
     },
   ],
+  selectedFolderData: {},
 };
 
 const setLinksFolderState = (state, action) => {
@@ -36,6 +37,62 @@ const setLinksFolderState = (state, action) => {
   return {
     ...state,
     linksFolders: [...data],
+  };
+};
+
+const addNewLinkToState = (state, action) => {
+  const { data } = action;
+  const { linksFolders } = state;
+  const { name, url, icon, folderId, newId } = data;
+
+  const newLink = {
+    name,
+    url,
+    icon,
+    linkId: newId,
+    entries: 1,
+  };
+
+  const allFoldersCopy = [...linksFolders];
+  const folderSelectedIndex = allFoldersCopy.findIndex(
+    (folder) => folder._id === folderId
+  );
+  const folderSelectedCopy = { ...allFoldersCopy[folderSelectedIndex] };
+  let copyOfFoldersLinks = [...folderSelectedCopy.links];
+
+  copyOfFoldersLinks = [...copyOfFoldersLinks, newLink];
+
+  folderSelectedCopy.links = copyOfFoldersLinks;
+  allFoldersCopy[folderSelectedIndex] = { ...folderSelectedCopy };
+
+  return {
+    ...state,
+    linksFolders: allFoldersCopy,
+  };
+};
+
+const deleteLinkFromState = (state, action) => {
+  const { data } = action;
+  const { linksFolders } = state;
+  const { folderId, linkId } = data;
+
+  const foldersCopy = [...linksFolders];
+  const folderSelectedIndex = foldersCopy.findIndex(
+    (folder) => folder._id === folderId
+  );
+  const folderSelectedCopy = { ...foldersCopy[folderSelectedIndex] };
+  let copyOfFoldersLinks = [...folderSelectedCopy.links];
+
+  copyOfFoldersLinks = copyOfFoldersLinks.filter(
+    (link) => link.linkId !== linkId
+  );
+
+  folderSelectedCopy.links = copyOfFoldersLinks;
+  foldersCopy[folderSelectedIndex] = { ...folderSelectedCopy };
+
+  return {
+    ...state,
+    linksFolders: foldersCopy,
   };
 };
 
@@ -49,12 +106,26 @@ const setNewFolderList = (state, action) => {
   };
 };
 
+const handleSelectedFolder = (state, action) => {
+  const { folderData } = action;
+  return {
+    ...state,
+    selectedFolderData: { ...folderData },
+  };
+};
+
 const linksReducer = (state = initialState, action) => {
   switch (action.type) {
     case actiosTypes.GET_ALL_LINKS:
       return setLinksFolderState(state, action);
     case actiosTypes.CREATE_NEW_FODER:
       return setNewFolderList(state, action);
+    case actiosTypes.ON_FOLDER_SELECTED:
+      return handleSelectedFolder(state, action);
+    case actiosTypes.ADD_NEW_LINK:
+      return addNewLinkToState(state, action);
+    case actiosTypes.DELETE_LINK:
+      return deleteLinkFromState(state, action);
     default:
       return state;
   }

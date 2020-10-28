@@ -9,15 +9,34 @@ import LinksFolderItem from "../../components/AdminSectionMain/LinksFolderItem/L
 import "./AdminSectionMain.scss";
 
 class AdminSectionMain extends Component {
-  state = {};
+  state = {
+    isLinksLoading: true,
+  };
+
+
+  openAddLinkToFolder = folder => {
+    const { selectFolderAction, openAddLink } = this.props;
+    openAddLink()
+    selectFolderAction(folder)
+  }
 
   componentDidMount() {
     const { getAllLinks } = this.props;
-    getAllLinks();
+    getAllLinks(() => this.setState({ isLinksLoading: false }));
   }
 
   render() {
-    const { linksList, openAddFolder, t } = this.props;
+    const { linksList, openAddFolder, t, deleteLinkAction } = this.props;
+    const { isLinksLoading } = this.state;
+
+    if (isLinksLoading) {
+      return (
+        <div className="spinner">
+          <img src="/img/spiner2.gif" alt="/" />
+        </div>
+      );
+    }
+
     return (
       <div className="adminSection">
         <div className="addFolderBtn">
@@ -27,7 +46,14 @@ class AdminSectionMain extends Component {
         </div>
         <div className="foldersList">
           {linksList.map((folder) => {
-            return <LinksFolderItem key={folder._id} folderData={folder} />;
+            return (
+              <LinksFolderItem
+                key={folder._id}
+                folderData={folder}
+                openAddLink={() => this.openAddLinkToFolder(folder)}
+                deleteLink={(folderId, linkId) => deleteLinkAction(folderId, linkId)}
+              />
+            );
           })}
         </div>
       </div>
@@ -43,14 +69,20 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllLinks: () => dispatch(actions.getAllLinksFoldersAction()),
+    getAllLinks: (callback) =>
+      dispatch(actions.getAllLinksFoldersAction(callback)),
     openAddFolder: () => dispatch(actions.openCreateFolderModalAction()),
+    openAddLink: () => dispatch(actions.openAddLinkModalAction()),
+    selectFolderAction: (folder) => dispatch(actions.selectFolderAction(folder)),
+    deleteLinkAction: (folderId, linkId) => dispatch(actions.deleteLinkAction(folderId, linkId))
   };
 };
 
 AdminSectionMain.propTypes = {
   getAllLinks: PropTypes.func.isRequired,
   openAddFolder: PropTypes.func.isRequired,
+  openAddLink: PropTypes.func.isRequired,
+  deleteLinkAction: PropTypes.func.isRequired,
   linksList: PropTypes.arrayOf(PropTypes.shape({})),
 };
 

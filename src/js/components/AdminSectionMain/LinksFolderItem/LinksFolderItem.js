@@ -7,7 +7,7 @@ import LinkItem from "../LinkItem/LinkItem";
 import "./LinksFolderItem.scss";
 
 const LinksFolderItem = (props) => {
-  const { folderData } = props;
+  const { folderData, openAddLink, deleteLink } = props;
   const { folderName, folderColor, links, _id } = folderData;
   const [isFoderOpen, setIsFoderOpen] = useState(false);
 
@@ -19,9 +19,9 @@ const LinksFolderItem = (props) => {
       >
         <h3>{`${folderName} (${links.length})`}</h3>
         <button type="button" onClick={() => {}}>
-          <i className="fa fa-trash" />
+          <i className="fa fa-times-circle" />
         </button>
-        <button type="button" onClick={() => {}}>
+        <button type="button" onClick={openAddLink}>
           <i className="fa fa-plus" />
         </button>
         <button
@@ -35,7 +35,13 @@ const LinksFolderItem = (props) => {
       </div>
       <div className={cn("folderContent", isFoderOpen ? "openFolder" : null)}>
         {links.map((link) => {
-          return <LinkItem key={link.linkId} linkData={link} />;
+          return (
+            <LinkItem
+              key={link.linkId}
+              linkData={link}
+              deleteLink={() => deleteLink(_id, link.linkId)}
+            />
+          );
         })}
       </div>
     </div>
@@ -43,6 +49,8 @@ const LinksFolderItem = (props) => {
 };
 
 LinksFolderItem.propTypes = {
+  openAddLink: PropTypes.func.isRequired,
+  deleteLink: PropTypes.func.isRequired,
   folderData: PropTypes.shape({
     folderName: PropTypes.string,
     folderColor: PropTypes.string,

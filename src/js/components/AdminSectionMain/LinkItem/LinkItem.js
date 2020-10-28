@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import "./LinkItem.scss";
 
 const LinkItem = (props) => {
-  const { linkData } = props;
-  const { name, url, icon, linkId } = linkData;
+  const { linkData, deleteLink } = props;
+  const { name, url, icon } = linkData;
 
   return (
     <div className="linkItem">
@@ -18,14 +18,17 @@ const LinkItem = (props) => {
           {url}
         </a>
       </div>
-      <button type="button">
-        <i className="fa fa-trash" />
-      </button>
+      <div className="deleteBtn">
+        <button type="button" onClick={deleteLink}>
+          <i className="fa fa-times-circle" />
+        </button>
+      </div>
     </div>
   );
 };
 
 LinkItem.propTypes = {
+  deleteLink: PropTypes.func.isRequired,
   linkData: PropTypes.shape({
     name: PropTypes.string,
     url: PropTypes.string,

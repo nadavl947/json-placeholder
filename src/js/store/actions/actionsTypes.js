@@ -24,6 +24,7 @@ export const OPEN_SELECT_USER_MODAL = "OPEN_SELECT_USER_MODAL";
 export const ADD_NEW_COMMENT = "ADD_NEW_COMMENT";
 export const OPEN_CREATE_POST_MODAL = "OPEN_CREATE_POST_MODAL";
 export const OPEN_CREATE_FOLDER_MODAL = "OPEN_CREATE_FOLDER_MODAL";
+export const OPEN_ADD_LINK_MODAL = "OPEN_ADD_LINK_MODAL";
 
 // admin action
 export const LOG_IN = "LOG_IN";
@@ -33,3 +34,6 @@ export const IS_ADMIN_LOGGED = "IS_ADMIN_LOGGED";
 // links actions
 export const GET_ALL_LINKS = "GET_ALL_LINKS";
 export const CREATE_NEW_FODER = "CREATE_NEW_FODER";
+export const ON_FOLDER_SELECTED = "ON_FOLDER_SELECTED";
+export const ADD_NEW_LINK = "ADD_NEW_LINK";
+export const DELETE_LINK = "DELETE_LINK";

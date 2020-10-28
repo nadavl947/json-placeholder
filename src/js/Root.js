@@ -9,6 +9,7 @@ import MovieDetails from "./components/MoviesMain/MovieDetails/MovieDetails";
 import SelecteUserModal from "./components/PostsMain/SelecteUserModal/SelecteUserModal";
 import CreatePostModal from "./components/PostsMain/CreatePostModal/CreatePostModal";
 import CreateLinksFolderModal from "./components/AdminSectionMain/CreateLinksFolderModal/CreateLinksFolderModal";
+import AddLinkModal from "./components/AdminSectionMain/AddLinkModal/AddLinkModal";
 
 import "./Root.scss";
 
@@ -36,6 +37,7 @@ const Root = (props) => {
     isAdminLoggedIn,
     isCreateLinksFolderVisible,
     checkIfAdminLogged,
+    isAddLinkVisible,
     history,
   } = props;
 
@@ -53,6 +55,7 @@ const Root = (props) => {
       {isSelectUserVisible && <SelecteUserModal />}
       {isCreatePostVisible && <CreatePostModal />}
       {isCreateLinksFolderVisible && <CreateLinksFolderModal />}
+      {isAddLinkVisible && <AddLinkModal />}
       <Header />
       <div className="body">
         <div className="switchContainer">
@@ -93,6 +96,7 @@ const mapStateToProps = (state) => ({
   isSelectUserVisible: state.mainReducer.isSelectUserVisible,
   isCreatePostVisible: state.mainReducer.isCreatePostVisible,
   isCreateLinksFolderVisible: state.mainReducer.isCreateLinksFolderVisible,
+  isAddLinkVisible: state.mainReducer.isAddLinkVisible,
   isAdminLoggedIn: state.adminReducer.isAdminLogged,
 });
 

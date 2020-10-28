@@ -6,6 +6,7 @@ const initialState = {
   isSelectUserVisible: false,
   isCreatePostVisible: false,
   isCreateLinksFolderVisible: false,
+  isAddLinkVisible: false,
   currentSystemUser: {},
 };
 
@@ -54,6 +55,15 @@ const handelCreateFolderModalVisible = (state) => {
   };
 };
 
+const handleAddLinkVisible = (state) => {
+  const { isAddLinkVisible } = state;
+
+  return {
+    ...state,
+    isAddLinkVisible: !isAddLinkVisible,
+  };
+};
+
 const setCurrentUserState = (state, action) => {
   const { data } = action;
 
@@ -77,6 +87,8 @@ const mainReducer = (state = initialState, action) => {
       return setCurrentUserState(state, action);
     case actionsTypes.OPEN_CREATE_FOLDER_MODAL:
       return handelCreateFolderModalVisible(state);
+    case actionsTypes.OPEN_ADD_LINK_MODAL:
+      return handleAddLinkVisible(state);
     default:
       return state;
   }

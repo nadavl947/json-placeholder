@@ -20,6 +20,10 @@ const openCreateFolderModal = () => ({
   type: actionsTypes.OPEN_CREATE_FOLDER_MODAL,
 });
 
+const openAddLinkModal = () => ({
+  type: actionsTypes.OPEN_ADD_LINK_MODAL,
+});
+
 const setCurrentUserata = (data) => ({
   type: actionsTypes.SET_CURRENT_USER_DATA,
   data,
@@ -47,4 +51,8 @@ export const selecteCurrentUser = (currentUserData) => async (dispatch) => {
 
 export const openCreateFolderModalAction = () => async (dispatch) => {
   dispatch(openCreateFolderModal());
+};
+
+export const openAddLinkModalAction = () => async (dispatch) => {
+  dispatch(openAddLinkModal());
 };
