@@ -96,6 +96,35 @@ const deleteLinkFromState = (state, action) => {
   };
 };
 
+const increseLinkEnteriesState = (state, action) => {
+  const { data } = action;
+  const { linksFolders } = state;
+  const { folderId, linkId } = data;
+
+  const foldersCopy = [...linksFolders];
+  const folderSelectedIndex = foldersCopy.findIndex(
+    (folder) => folder._id === folderId
+  );
+  let folderSelectedCopy = { ...foldersCopy[folderSelectedIndex] };
+  let copyOfFoldersLinks = [...folderSelectedCopy.links];
+
+  const findLinksIndex = copyOfFoldersLinks.findIndex(link => link.linkId === linkId);
+  let copyOfLinkSelected = {...copyOfFoldersLinks[findLinksIndex]}
+
+  copyOfLinkSelected.entries = copyOfLinkSelected.entries + 1
+
+  copyOfFoldersLinks[findLinksIndex] = copyOfLinkSelected;
+  folderSelectedCopy.links = copyOfFoldersLinks;
+  foldersCopy[folderSelectedIndex] = folderSelectedCopy;
+
+  console.log(foldersCopy)
+  return {
+    ...state,
+    linksFolders: foldersCopy
+  }
+
+}
+
 const setNewFolderList = (state, action) => {
   const { data } = action;
   const { linksFolders } = state;
@@ -114,6 +143,19 @@ const handleSelectedFolder = (state, action) => {
   };
 };
 
+const deleteFolderState = (state, action) => {
+  const { folderId } = action;
+  const { linksFolders } = state;
+
+  let folderListCopy = [...linksFolders];
+  folderListCopy = folderListCopy.filter((folder) => folder._id !== folderId);
+
+  return {
+    ...state,
+    linksFolders: folderListCopy,
+  };
+};
+
 const linksReducer = (state = initialState, action) => {
   switch (action.type) {
     case actiosTypes.GET_ALL_LINKS:
@@ -126,6 +168,10 @@ const linksReducer = (state = initialState, action) => {
       return addNewLinkToState(state, action);
     case actiosTypes.DELETE_LINK:
       return deleteLinkFromState(state, action);
+    case actiosTypes.DELETE_FOLDER:
+      return deleteFolderState(state, action);
+    case actiosTypes.INCRESE_LINK:
+      return increseLinkEnteriesState(state, action)
     default:
       return state;
   }

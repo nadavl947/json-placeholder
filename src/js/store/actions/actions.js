@@ -38,4 +38,6 @@ export {
   selectFolderAction,
   addNewLinkAction,
   deleteLinkAction,
+  deleteFolderAction,
+  increseLinkEnteriesAction
 } from "./linksActions";

@@ -64,10 +64,10 @@ const SideMenu = (props) => {
           <div className="sectionTitle">
             <h3>{t("sideMenu.admin")}</h3>
           </div>
-          <NavLink to="/AdminSectionMain">
+          <NavLink to="/Favorites">
             <div className={cn("adminLinks", "generalLinkItem")}>
-              <i className="fa fa-unlock-alt" />
-              <h3>{t("sideMenu.admin")}</h3>
+              <i className="fa fa-star" />
+              <h3>{t("sideMenu.admin_favorites")}</h3>
             </div>
           </NavLink>
           <div className="logOuBtn">

@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../store/actions/actions";
 import cn from "classnames";
 import axios from "axios";
+import { withTranslation } from "react-i18next";
 
 import "./AddLinkModal.scss";
 
 const AddLinkModal = (props) => {
   const addLinkRef = useRef(null);
+  const { t } = props;
   const isAddLinkVisible = useSelector(
     (state) => state.mainReducer.isAddLinkVisible
   );
@@ -54,9 +56,21 @@ const AddLinkModal = (props) => {
         setContainerType("deteilsStep");
       } catch (error) {
         console.log(error);
+        setNewIcon("/img/anonymous.png");
+        setNewName(newUrl);
+        setIsLoading(false);
+        setContainerType("deteilsStep");
       }
     } else {
-      dispatch(actions.addNewLinkAction(newName, newUrl, newIcon, folderData._id, closeModal));
+      dispatch(
+        actions.addNewLinkAction(
+          newName,
+          newUrl,
+          newIcon,
+          folderData._id,
+          closeModal
+        )
+      );
     }
   };
 
@@ -72,7 +86,7 @@ const AddLinkModal = (props) => {
             )}
             onClick={() => setContainerType("urlStep")}
           >
-            <p>Back</p>
+            <p>{t("adminSection.add_link_modal_back")}</p>
           </button>
         )}
         <div className="modalTitle">
@@ -85,7 +99,7 @@ const AddLinkModal = (props) => {
           )}
         >
           <div className="inputUrlStep">
-            <p>Enter Valid URL</p>
+            <p>{t("adminSection.add_link_modal_lable")}</p>
             <input
               type="text"
               value={newUrl}
@@ -94,7 +108,11 @@ const AddLinkModal = (props) => {
           </div>
           <div className="linksDeteilsStep">
             <div className="deteilsItem">
-              <img src={newIcon || "/img/anonymous.png"} alt="/" />
+              <img
+                src={newIcon || "/img/anonymous.png"}
+                alt="/"
+                onError={(e) => (e.target.src = "/img/anonymous.png")}
+              />
               <div className="linkTitle">
                 <input
                   type="text"
@@ -114,7 +132,9 @@ const AddLinkModal = (props) => {
               onClick={() => handleSubmitClick()}
               disabled={!newUrl}
             >
-              {containerType === "urlStep" ? "Continue" : "Create"}
+              {containerType === "urlStep"
+                ? t("adminSection.add_link_modal_continue")
+                : t("adminSection.add_link_modal_submit")}
             </button>
           )}
         </div>
@@ -123,4 +143,4 @@ const AddLinkModal = (props) => {
   );
 };
 
-export default AddLinkModal;
+export default withTranslation()(AddLinkModal);

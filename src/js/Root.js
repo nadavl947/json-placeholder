@@ -69,7 +69,7 @@ const Root = (props) => {
                   <MoviesMain exact path="/MoviesMain" />
                   <UsersCreate exact path="/UsersCreate" />
                   <PostsMain exact path="/PostsMain" />
-                  <AdminSectionMain exact path="/AdminSectionMain" />
+                  <AdminSectionMain exact path="/Favorites" />
                 </Switch>
               </div>
             </>

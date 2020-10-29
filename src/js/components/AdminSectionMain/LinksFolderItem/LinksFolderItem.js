@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
 
 import LinkItem from "../LinkItem/LinkItem";
 
 import "./LinksFolderItem.scss";
 
 const LinksFolderItem = (props) => {
-  const { folderData, openAddLink, deleteLink } = props;
+  const { folderData, openAddLink, deleteLink, deleteFolder, t, onLinkClick } = props;
   const { folderName, folderColor, links, _id } = folderData;
   const [isFoderOpen, setIsFoderOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   return (
     <div className="folderItem">
@@ -17,17 +19,30 @@ const LinksFolderItem = (props) => {
         className={cn("folderTitle", isFoderOpen ? "openFolder" : null)}
         style={{ backgroundColor: folderColor }}
       >
-        <h3>{`${folderName} (${links.length})`}</h3>
-        <button type="button" onClick={() => {}}>
+        <button
+          className="folderNameButton"
+          type="button"
+          onClick={() => setIsFoderOpen(!isFoderOpen)}
+        >
+          <h3>{`${folderName} (${links.length})`}</h3>
+        </button>
+        <button type="button" onClick={() => setIsDeleteOpen(!isDeleteOpen)}>
           <i className="fa fa-times-circle" />
         </button>
+        <div
+          className={cn("deleteSection", isDeleteOpen ? "deleteOpen" : null)}
+        >
+          <p>{t("adminSection.delete_folder_text")}</p>
+          <button type="button" onClick={deleteFolder}>
+            {t("adminSection.delete")}
+          </button>
+        </div>
         <button type="button" onClick={openAddLink}>
           <i className="fa fa-plus" />
         </button>
         <button
           type="button"
           onClick={() => setIsFoderOpen(!isFoderOpen)}
-          disabled={links.length === 0 ? true : false}
           className="openTabBtn"
         >
           <i className="fa fa-arrow-up" />
@@ -40,6 +55,7 @@ const LinksFolderItem = (props) => {
               key={link.linkId}
               linkData={link}
               deleteLink={() => deleteLink(_id, link.linkId)}
+              onLinkClick={() => onLinkClick(_id, link.linkId)}
             />
           );
         })}
@@ -51,6 +67,9 @@ const LinksFolderItem = (props) => {
 LinksFolderItem.propTypes = {
   openAddLink: PropTypes.func.isRequired,
   deleteLink: PropTypes.func.isRequired,
+  deleteFolder: PropTypes.func.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
   folderData: PropTypes.shape({
     folderName: PropTypes.string,
     folderColor: PropTypes.string,
@@ -59,4 +78,4 @@ LinksFolderItem.propTypes = {
   }).isRequired,
 };
 
-export default LinksFolderItem;
+export default withTranslation()(LinksFolderItem);

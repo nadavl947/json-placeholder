@@ -11,7 +11,7 @@
     "data_title": "Data Placeholders",
     "create_title": "Creating Data",
     "logout": "LogOut",
-    "admin": "Admin Section"
+    "admin_favorites": "Admins Favorites"
   },
   "homeMain": {
     "get": "Get",
@@ -106,7 +106,17 @@
     "upload_btn": "Selcet a File"
   },
   "adminSection": {
-    "newFolderBtn": "Create New Folder"
+    "newFolderBtn": "Create New Folder",
+    "delete_folder_text": "All folder's links will be lost",
+    "delete": "Delete",
+    "add_link_modal_back": "Back",
+    "add_link_modal_lable": "Enter Valid URL",
+    "add_link_modal_continue": "Continue",
+    "add_link_modal_submit": "Create",
+    "add_folder_modal_title": "Create New Folder",
+    "add_folder_modal_name": "Folder's Name",
+    "add_folder_modal_color": "Folder's Color",
+    "add_folder_modal_create": "Create"
   },
   "logIn": {
     "email": "Email",

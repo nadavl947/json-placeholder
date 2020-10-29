@@ -12,11 +12,15 @@
     border-radius: 12px;
     transition: all 0.1s ease-in-out;
 
-    h3 {
-      color: $gradientL5;
+    .folderNameButton {
       flex: 1;
-      font-size: 18px;
-      font-weight: 600;
+      text-align: inherit;
+
+      h3 {
+        color: $gradientL5;
+        font-size: 18px;
+        font-weight: 600;
+      }
     }
 
     button {
@@ -28,6 +32,42 @@
       i {
         transform: rotate(180deg);
         transition: all 0.2s ease-in-out;
+      }
+    }
+
+    .deleteSection {
+      display: flex;
+      width: 0;
+      overflow: hidden;
+      transition: all 0.1s ease-in-out;
+
+      p {
+        color: $gradientL5;
+        font-weight: 600;
+        margin: 0 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: all 0.1s ease-in-out;
+        opacity: 0;
+      }
+
+      button {
+        border-bottom: 1px solid $gradientL5;
+        color: $gradientL5;
+        font-weight: 600;
+        opacity: 0;
+        transition: all 0.1s ease-in-out;
+      }
+
+      &.deleteOpen {
+        transition: all 0.1s ease-in-out;
+        width: 270px;
+
+        p,
+        button {
+          transition: all 0.1s ease-in-out;
+          opacity: 1;
+        }
       }
     }
 

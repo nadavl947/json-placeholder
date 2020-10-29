@@ -37,3 +37,5 @@ export const CREATE_NEW_FODER = "CREATE_NEW_FODER";
 export const ON_FOLDER_SELECTED = "ON_FOLDER_SELECTED";
 export const ADD_NEW_LINK = "ADD_NEW_LINK";
 export const DELETE_LINK = "DELETE_LINK";
+export const DELETE_FOLDER = "DELETE_FOLDER";
+export const INCRESE_LINK = "INCRESE_LINK";

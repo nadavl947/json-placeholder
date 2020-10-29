@@ -13,12 +13,11 @@ class AdminSectionMain extends Component {
     isLinksLoading: true,
   };
 
-
-  openAddLinkToFolder = folder => {
+  openAddLinkToFolder = (folder) => {
     const { selectFolderAction, openAddLink } = this.props;
-    openAddLink()
-    selectFolderAction(folder)
-  }
+    openAddLink();
+    selectFolderAction(folder);
+  };
 
   componentDidMount() {
     const { getAllLinks } = this.props;
@@ -26,7 +25,14 @@ class AdminSectionMain extends Component {
   }
 
   render() {
-    const { linksList, openAddFolder, t, deleteLinkAction } = this.props;
+    const {
+      linksList,
+      openAddFolder,
+      t,
+      deleteLinkAction,
+      deleteFolderAction,
+      increseLinkEnteriesAction,
+    } = this.props;
     const { isLinksLoading } = this.state;
 
     if (isLinksLoading) {
@@ -51,7 +57,13 @@ class AdminSectionMain extends Component {
                 key={folder._id}
                 folderData={folder}
                 openAddLink={() => this.openAddLinkToFolder(folder)}
-                deleteLink={(folderId, linkId) => deleteLinkAction(folderId, linkId)}
+                deleteLink={(folderId, linkId) =>
+                  deleteLinkAction(folderId, linkId)
+                }
+                onLinkClick={(folderId, linkId) =>
+                  increseLinkEnteriesAction(folderId, linkId)
+                }
+                deleteFolder={() => deleteFolderAction(folder._id)}
               />
             );
           })}
@@ -73,8 +85,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.getAllLinksFoldersAction(callback)),
     openAddFolder: () => dispatch(actions.openCreateFolderModalAction()),
     openAddLink: () => dispatch(actions.openAddLinkModalAction()),
-    selectFolderAction: (folder) => dispatch(actions.selectFolderAction(folder)),
-    deleteLinkAction: (folderId, linkId) => dispatch(actions.deleteLinkAction(folderId, linkId))
+    selectFolderAction: (folder) =>
+      dispatch(actions.selectFolderAction(folder)),
+    deleteLinkAction: (folderId, linkId) =>
+      dispatch(actions.deleteLinkAction(folderId, linkId)),
+    increseLinkEnteriesAction: (folderId, linkId) =>
+      dispatch(actions.increseLinkEnteriesAction(folderId, linkId)),
+    deleteFolderAction: (folderId) =>
+      dispatch(actions.deleteFolderAction(folderId)),
   };
 };
 

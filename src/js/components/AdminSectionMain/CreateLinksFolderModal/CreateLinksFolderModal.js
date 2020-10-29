@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../store/actions/actions";
+import { withTranslation } from "react-i18next";
 
 import "./CreateLinksFolderModal.scss";
 
 const CreateLinksFolderModal = (props) => {
+  const { t } = props;
   const selectUserRef = useRef(null);
   const isCreateLinksFolderVisible = useSelector(
     (state) => state.mainReducer.isCreateLinksFolderVisible
@@ -42,10 +44,10 @@ const CreateLinksFolderModal = (props) => {
     <div className="createLinksFolderModalContainer">
       <div className="modelContent" ref={selectUserRef}>
         <div className="modalTitle">
-          <h3>Create New Folder</h3>
+          <h3>{t("adminSection.add_folder_modal_title")}</h3>
         </div>
         <div className="inputItem">
-          <p>Folder's Name</p>
+          <p>{t("adminSection.add_folder_modal_name")}</p>
           <input
             type="text"
             value={newFolderName}
@@ -54,7 +56,7 @@ const CreateLinksFolderModal = (props) => {
         </div>
         <div className="inputItem">
           <p style={{ borderBottomColor: folderColor || null }}>
-            Folder's Color
+          {t("adminSection.add_folder_modal_color")}
           </p>
           <div className="colorsList">
             {colorsList.map((color) => {
@@ -74,7 +76,7 @@ const CreateLinksFolderModal = (props) => {
               onClick={() => createNewFolder()}
               disabled={!newFolderName || !folderColor ? true : false}
             >
-              Create
+              {t("adminSection.add_folder_modal_create")}
             </button>
           </div>
         </div>
@@ -83,4 +85,4 @@ const CreateLinksFolderModal = (props) => {
   );
 };
 
-export default CreateLinksFolderModal;
+export default withTranslation()(CreateLinksFolderModal);
