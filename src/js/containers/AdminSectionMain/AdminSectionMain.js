@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { withTranslation } from "react-i18next";
 
 import LinksFolderItem from "../../components/AdminSectionMain/LinksFolderItem/LinksFolderItem";
+import FavoritItam from "../../components/AdminSectionMain/FavoritItam/FavoritItam";
 
 import "./AdminSectionMain.scss";
 
@@ -32,7 +33,9 @@ class AdminSectionMain extends Component {
       deleteLinkAction,
       deleteFolderAction,
       increseLinkEnteriesAction,
+      favoritesList,
     } = this.props;
+
     const { isLinksLoading } = this.state;
 
     if (isLinksLoading) {
@@ -45,6 +48,16 @@ class AdminSectionMain extends Component {
 
     return (
       <div className="adminSection">
+        <div className="favoritList">
+          {favoritesList.slice(0, 5).map((link) => {
+            return (
+              <FavoritItam
+                favoritData={link}
+                key={link.linkId}
+              />
+            );
+          })}
+        </div>
         <div className="addFolderBtn">
           <button type="button" onClick={() => openAddFolder()}>
             {t("adminSection.newFolderBtn")}
@@ -76,6 +89,7 @@ class AdminSectionMain extends Component {
 const mapStateToProps = (state) => {
   return {
     linksList: state.linksReducer.linksFolders,
+    favoritesList: state.linksReducer.favoritesList,
   };
 };
 
@@ -102,10 +116,12 @@ AdminSectionMain.propTypes = {
   openAddLink: PropTypes.func.isRequired,
   deleteLinkAction: PropTypes.func.isRequired,
   linksList: PropTypes.arrayOf(PropTypes.shape({})),
+  favoritesList: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 AdminSectionMain.defaultProps = {
   linksList: [],
+  favoritesList: [],
 };
 
 export default withTranslation()(

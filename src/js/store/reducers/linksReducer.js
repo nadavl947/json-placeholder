@@ -29,14 +29,25 @@ const initialState = {
     },
   ],
   selectedFolderData: {},
+  favoritesList: [],
 };
 
 const setLinksFolderState = (state, action) => {
   const { data } = action;
 
+  let allLinksArray = [];
+  data.forEach((folder) => {
+    allLinksArray = [...allLinksArray, ...folder.links];
+  });
+
+  allLinksArray.sort((a, b) => {
+    return a.entries - b.entries;
+  });
+
   return {
     ...state,
     linksFolders: [...data],
+    favoritesList: allLinksArray.reverse(),
   };
 };
 
@@ -108,22 +119,32 @@ const increseLinkEnteriesState = (state, action) => {
   let folderSelectedCopy = { ...foldersCopy[folderSelectedIndex] };
   let copyOfFoldersLinks = [...folderSelectedCopy.links];
 
-  const findLinksIndex = copyOfFoldersLinks.findIndex(link => link.linkId === linkId);
-  let copyOfLinkSelected = {...copyOfFoldersLinks[findLinksIndex]}
+  const findLinksIndex = copyOfFoldersLinks.findIndex(
+    (link) => link.linkId === linkId
+  );
+  let copyOfLinkSelected = { ...copyOfFoldersLinks[findLinksIndex] };
 
-  copyOfLinkSelected.entries = copyOfLinkSelected.entries + 1
+  copyOfLinkSelected.entries = copyOfLinkSelected.entries + 1;
 
   copyOfFoldersLinks[findLinksIndex] = copyOfLinkSelected;
   folderSelectedCopy.links = copyOfFoldersLinks;
   foldersCopy[folderSelectedIndex] = folderSelectedCopy;
 
-  console.log(foldersCopy)
+  let allLinksArray = [];
+  foldersCopy.forEach((folder) => {
+    allLinksArray = [...allLinksArray, ...folder.links];
+  });
+
+  allLinksArray.sort((a, b) => {
+    return a.entries - b.entries;
+  });
+
   return {
     ...state,
-    linksFolders: foldersCopy
-  }
-
-}
+    linksFolders: foldersCopy,
+    favoritesList: allLinksArray.reverse(),
+  };
+};
 
 const setNewFolderList = (state, action) => {
   const { data } = action;
@@ -171,7 +192,7 @@ const linksReducer = (state = initialState, action) => {
     case actiosTypes.DELETE_FOLDER:
       return deleteFolderState(state, action);
     case actiosTypes.INCRESE_LINK:
-      return increseLinkEnteriesState(state, action)
+      return increseLinkEnteriesState(state, action);
     default:
       return state;
   }

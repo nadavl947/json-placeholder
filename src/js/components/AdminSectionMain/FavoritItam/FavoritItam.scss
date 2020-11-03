@@ -1,0 +1,31 @@
+@import "../../../../css/designSystem.scss";
+
+.favoritItem {
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+  margin: 5px 10px;
+
+  &:hover {
+      background-color: $gradientL2;
+  }
+
+  > img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin: 0 auto 20px;
+  }
+
+  > h3 {
+    font-size: 16px;
+    color: $gradientD3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90px;
+  }
+}
