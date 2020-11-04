@@ -80,36 +80,32 @@ $gradientL3: #ebf0f4;
 $gradientL4: #f5f8f9;
 $gradientL5: #fff;
 
+// ---------------------------------------------------- key frames animation
 
-// second system
-// $primary: #e42256;
-// $primaryD1: #d31a4b;
-// $primaryD2: #bc1743;
-// $primaryD3: #a5143b;
-// $primaryD4: #1c127a;
-// $primaryL1: #e73967;
-// $primaryL2: #ea4f79;
-// $primaryL3: #ec668a;
-// $primaryL4: #e6dfff;
+@keyframes uploadAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-// $secondary: #00b1b0;
-// $secondaryD1: #009897;
-// $secondaryD2: #007e7d;
-// $secondaryD3: #006564;
-// $secondaryD4: #0a4164;
-// $secondaryL1: #00cbc9;
-// $secondaryL2: #00e4e3;
-// $secondaryL3: #00fefc;
-// $secondaryL4: #d7fcf2;
+@keyframes scalAnimations {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 
-// $gradient: #fec84d;
-// $gradientD1: #fec034;
-// $gradientD2: #feb81a;
-// $gradientD3: #fdb001;
-// $gradientD4: #0a4164;
-// $gradientD5: #00081c;
-// $gradientL1: #fed066;
-// $gradientL2: #fed880;
-// $gradientL3: #fee099;
-// $gradientL4: #fff4db;
-// $gradientL5: #fff;
+// ----------------------------------------------------mixin
+
+@mixin uploadMixin {
+  animation: uploadAnimation 0.3s ease-in-out 0s 1;
+}
+
+@mixin scaleMixin {
+  animation: scalAnimations 0.3s ease-in-out 0s 1;
+}

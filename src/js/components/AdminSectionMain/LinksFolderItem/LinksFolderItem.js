@@ -8,7 +8,15 @@ import LinkItem from "../LinkItem/LinkItem";
 import "./LinksFolderItem.scss";
 
 const LinksFolderItem = (props) => {
-  const { folderData, openAddLink, deleteLink, deleteFolder, t, onLinkClick } = props;
+  const {
+    folderData,
+    openAddLink,
+    deleteLink,
+    deleteFolder,
+    t,
+    onLinkClick,
+  } = props;
+
   const { folderName, folderColor, links, _id } = folderData;
   const [isFoderOpen, setIsFoderOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);

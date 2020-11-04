@@ -21,6 +21,14 @@ const rootReducer = combineReducers(reducers);
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
+// global.isMobile = null;
+// global.isAndroid = /(Android)/i.test(navigator.userAgent);
+// global.isIos = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+// if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+// 	global.isMobile = true;
+// }
+
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>

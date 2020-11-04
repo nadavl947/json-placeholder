@@ -81,17 +81,16 @@
       }
     }
   }
+
   .folderContent {
     background-color: $gradientL5;
     height: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     transition: all 0.2s ease-in-out;
     border-radius: 12px;
-    padding: 0;
     opacity: 0;
 
     &.openFolder {
-      padding: 20px;
       height: 200px;
       opacity: 1;
       transition: all 0.2s ease-in-out;
